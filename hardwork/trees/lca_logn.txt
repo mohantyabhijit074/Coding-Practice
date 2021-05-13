@@ -1,0 +1,121 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long 
+//long long dp[200005];
+vector<int> tree[200001];
+int up[200001][20];
+int lvl[200001];
+void dfs(int src,int par,int level=0)
+{
+	lvl[src] = level;
+	for(int child:tree[src])
+	{
+		if(child!=par)
+		{
+			dfs(child,src,level+1);
+		}
+	}
+}
+void binary_lifting(int src,int par)
+{
+	up[src][0] = par;
+	for(int i=1;i<20;i++)
+	{
+		if(up[src][i-1]!=-1)
+			up[src][i] = up[up[src][i-1]][i-1];
+		else
+			up[src][i] = -1;
+	}
+	for(int child : tree[src])
+	{
+		if(child!=par)
+		{
+			binary_lifting(child,src);
+		}
+	}
+}
+
+int ans_query(int node,int jump)
+{
+	if(node==-1 || jump==0)
+	{
+		return node;
+	}
+	for(int i=19;i>=0;i--)
+	{
+		if(jump>=(1<<i))
+		{
+			return ans_query(up[node][i],jump-(1<<i));
+		}
+	}
+}
+
+int lift_node(int node,int jump)
+{
+	for(int i=19;i>=0;i--)
+	{
+		if(node==-1 || jump==0)
+		{
+			break;
+		}
+		if(jump>=(1<<i))
+		{
+			jump-=(1<<i);
+			node = up[node][i];
+		}
+	}
+	return node;
+}
+int lca(int u,int v)
+{
+	if(lvl[u]<lvl[v])
+	{
+		swap(u,v);
+	}
+	u = lift_node(u,lvl[u]-lvl[v]);
+	if(u==v)
+	{
+		return u;
+	}
+	for(int i=19;i>=0;i--)
+	{
+		if(up[u][i]!=up[v][i])
+		{
+			u = up[u][i];
+			v = up[v][i];
+		}
+	}
+	return lift_node(u,1);
+}
+
+int main()
+{
+	
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		ll n,m,x,i,j,k,q;
+		cin >> n >> q;
+		for(int i=2;i<n+1;i++)
+		{
+			cin >> x;
+			tree[x].push_back(i);
+			tree[i].push_back(x);
+		}
+		binary_lifting(1,-1);
+		dfs(1,-1);
+		while(q--)
+		{
+			int u,v;
+			cin >> u >> v;
+			cout << lca(u,v) <<"\n";
+		}
+	}
+	return 0;
+}

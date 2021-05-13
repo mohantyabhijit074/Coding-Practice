@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long 
+//long long dp[200005];
+bool isBipartite(vector<vector<int>>&adj,int n,int node,vector<int>&colour)
+{
+	queue<int> q;
+	q.push(node);
+	colour[node] = 1;
+	while(!q.empty())
+	{
+		int cur = q.front();
+		q.pop();
+		for(int ele:adj[cur])
+		{
+			if(colour[ele]==colour[cur])
+				return false; 
+			if(colour[ele]==-1)
+			{
+				colour[ele] = 1-colour[cur];
+				q.push(ele);
+			}
+		}
+	}
+	return true;
+}
+int main()
+{
+	
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		int n,q,f=1;
+		cin >> n >> q;
+		vector<vector<int>> dislikes(q);
+		for(int i=0;i<q;i++)
+		{
+			int u,v;
+			cin >> u >> v;
+			dislikes[i].push_back(u);
+			dislikes[i].push_back(v);
+		}
+		vector<vector<int>> adj(n+1);
+		for(int i=0;i<q;i++)
+		{
+			adj[dislikes[i][0]].push_back(dislikes[i][1]);
+			adj[dislikes[i][1]].push_back(dislikes[i][0]);
+		}
+		vector<int> colour(n+1,-1);
+		for(int i=1;i<=n;i++)
+		{
+			if(colour[i]==-1)
+			{
+				if(!isBipartite(adj,n,i,colour))
+				{	
+					cout << "false" <<"\n";
+					f=0;
+					break;
+				}
+			}
+
+		}
+		if(f==1)
+		{
+			cout << "true\n";
+		}
+	}
+	return 0;
+}

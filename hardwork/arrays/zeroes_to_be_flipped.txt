@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll int
+//long long dp[200005];
+
+int main()
+{
+	
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+	int t = 1;
+	//cin >> t;
+	while(t--)
+	{
+		int n;
+		cin >> n;
+		vector<int> v(n);
+		for(int i=0;i<n;i++)
+		{
+			cin >> v[i];
+		}	
+		int m;
+		cin >> m;
+		int r = 0, l = 0, z = 0;
+		int best = 0;
+		int res = 0;
+		while(r<n)
+		{
+			if(z<=m)
+			{
+				if(v[r]==0)
+				{
+					z+=1;
+				}
+				r+=1;
+			}
+			if(z>m)
+			{
+				if(v[l]==0)
+				{
+					z-=1;
+				}
+				l+=1;
+			}
+			if(r-l>res && z<=m)
+			{
+				res = r-l;
+				best = l;
+			}
+		}
+		for(int i=0;i<res;i++)
+		{
+			if(v[best+i]==0)
+			{
+				cout << best+i <<" ";
+			}
+		}
+		cout << "\n";
+	}
+
+	return 0;
+}

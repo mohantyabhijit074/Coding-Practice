@@ -1,0 +1,86 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll int
+//long long dp[200005];
+void dfs(int i,int j,int n,int m,vector<vector<int>>& grid,int turn)
+{
+	if(i<0 || i>=n || j<0 || j>=m || grid[i][j]!=1)
+		return;
+	grid[i][j] = turn;
+	dfs(i+1,j,n,m,grid,turn);
+	dfs(i,j+1,n,m,grid,turn);
+	dfs(i-1,j,n,m,grid,turn);
+	dfs(i,j-1,n,m,grid,turn);
+}
+
+int main()
+{
+	
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		int n,m;
+		cin >> n >> m;
+		vector<vector<int>> v(n,vector<int>(m,0));
+		string s;
+		for(int i=0;i<n;i++)
+		{
+			cin >> s;
+			for(int j=0;j<s.size();j++)
+			{
+				if(s[j]=='1')
+				{
+					v[i][j] = 1;
+				}
+			}
+		}
+		int c = 1;
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<m;j++)
+			{
+				if(v[i][j]==1)
+				{
+					c+=1;
+					dfs(i,j,n,m,v,c);
+				}
+			}
+		}
+		unordered_map<int,int> mp;
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<m;j++)
+			{
+				mp[v[i][j]]+=1;	
+			}
+			
+		}
+		vector<int> temp;
+		for(auto it:mp)
+		{
+			if(it.first!=0)
+			{
+				temp.push_back(it.second);
+			}
+		}
+		sort(temp.begin(),temp.end(),greater<int>());
+		int ans;
+		int ct=1;
+		for(auto it = temp.begin();it!=temp.end();it++)
+		{
+			if(ct%2==0)
+			{
+				ans+=*it;
+			}
+			ct+=1;
+		}
+		cout << ans <<"\n";
+	}
+
+	return 0;
+}

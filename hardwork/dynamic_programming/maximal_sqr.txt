@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long 
+//long long dp[200005];
+void display(vector<vector<int>>&grid)
+{
+    int n = grid.size();
+    int m = grid[0].size();
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cout << grid[i][j] <<" ";
+        }
+        cout <<"\n";
+    }
+}
+int main()
+{
+	
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+	long long t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		int r,c;
+		cin >> r >> c;
+		vector<vector<int>> grid(r,vector<int>(c));
+		vector<vector<int>> temp(r+1,vector<int>((c+1),0));
+		for(int i=0;i<r;i++)
+		{
+			for(int j=0;j<c;j++)
+			{
+				cin >> grid[i][j];
+			}
+		}
+		int m = 0;
+		for(int i=1;i<=r;i++)
+		{
+			for(int j=1;j<=c;j++)
+			{
+				if(grid[i-1][j-1]==1)
+				{
+					temp[i][j] = 1+min(temp[i-1][j],min(temp[i][j-1],temp[i-1][j-1]));
+					m = max(m,temp[i][j]);
+				}
+				
+			}
+		}
+		display(grid);
+		cout << "The maximal square is: "<<m*m<<" "<<"\n";
+	}
+	return 0;
+}
