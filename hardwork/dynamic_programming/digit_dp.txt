@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+ll cnt(string& a,ll n,bool tight)
+{
+	if(tight==0)
+	{
+		return (pow(10,n)+0.1);
+	}
+	if(n==0)
+		return 1;
+	ll num = 0;
+	ll ub = a[a.length()-n]-'0';
+	for(ll i=0;i<=ub;i++)
+	{
+		num+=cnt(a,n-1,tight&(i==ub));
+	}
+	return num;
+
+}
+ll dp[20][2];
+ll fun(string& a,ll n,bool tight)
+{
+	if(n==0)
+		return 0;
+	if(dp[n][tight]!=-1)
+		return dp[n][tight];
+	ll ub = tight?(a[a.length()-n]-'0'):9;
+	ll total = 0;
+	for(ll dig = 0;dig<=ub;dig++)
+	{
+		total+=dig*cnt(a,n-1,tight & (dig==ub));
+		total+=fun(a,n-1,tight & (dig==ub));
+	}
+	return dp[n][tight]=total;
+}
+
+void solve()
+{
+	ll r,l;
+	cin >> l >> r;
+	if(l!=0)
+	{
+		l--;
+	}
+	string a = to_string(l);
+	string b = to_string(r);
+	memset(dp,-1,sizeof(dp));
+	ll sodb = fun(b,b.length(),1);
+	memset(dp,-1,sizeof(dp));
+	ll soda = fun(a,a.length(),1);
+	cout << sodb - soda <<"\n";
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	cin >> t;
+	//t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}
