@@ -1,0 +1,126 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+int n, m;
+vector<vector<pair<int,int>>> path;
+vector<vector<bool>> vis;
+int sx,sy,ex,ey;
+vector<pair<int,int>> moves = {{-1,0},{1,0},{0,-1},{0,1}};
+
+bool isvalid(int x,int y)
+{
+	if(x<0 || x>n-1 || y <0 || y>m-1)
+		return false;
+	if(vis[x][y])
+		return false;
+	return true;
+}
+
+void bfs()
+{
+	queue<pair<int,int>> q;
+	q.push({sx,sy});
+	while(!q.empty())
+	{
+		int a = q.front().first;
+		int b = q.front().second;
+		q.pop();
+		for(auto x : moves)
+		{
+			int mx = x.first;
+			int my = x.second;
+			if(isvalid(mx+a,my+b))
+			{
+				q.push({mx+a,my+b});
+				vis[mx+a][my+b] = true;
+				path[mx+a][my+b] = {mx,my};
+			}
+		}
+	}
+}
+
+void solve()
+{
+	cin >> n >> m;
+	path.resize(n);
+	vis.resize(n);
+	for(int i=0;i<n;i++)
+	{
+		path[i].resize(m);
+		vis[i].resize(m);
+	}
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<m;j++)
+		{
+			char c;
+			cin >> c;
+			if(c=='#')
+			{
+				vis[i][j] = true;
+			}
+			if(c=='A')
+			{
+				sx = i;
+				sy = j;
+			}
+			if(c=='B')
+			{
+				ex = i;
+				ey = j;
+			}
+		}
+	}
+	
+	bfs();
+	if(!vis[ex][ey])
+	{
+		cout << "NO\n";
+		return;
+	}
+	cout <<"YES\n";
+	vector<pair<int,int>> ans;
+	pair<int,int> end = {ex,ey};
+	while(end.first!=sx || end.second!=sy)
+	{
+		ans.push_back(path[end.first][end.second]);
+		end.first-=ans.back().first;
+		end.second-=ans.back().second;
+	}
+	reverse(ans.begin(),ans.end());
+	cout << ans.size() <<"\n";
+	for(auto c : ans)
+	{
+		if(c.first==1 && c.second==0)
+		{
+			cout << 'D';
+		}
+		if(c.first==-1 && c.second==0)
+		{
+			cout << 'U';
+		}
+		if(c.first==0 && c.second==1)
+		{
+			cout << 'R';
+		}if(c.first==0 && c.second==-1)
+		{
+			cout << 'L';
+		}
+	}
+	cout <<"\n";
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}
