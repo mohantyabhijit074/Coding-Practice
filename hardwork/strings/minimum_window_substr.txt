@@ -1,0 +1,80 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+	string s,t;
+	cin >> s >> t;
+	int n = s.length();
+	int m = t.length();
+	int mct = 0;
+	int dcmt = m;
+	map<char,int> mp1;
+	map<char,int> mp2;
+	string ans = "";
+	for(int i=0;i<m;++i)
+	{
+		mp1[t[i]]++;
+	}
+	int i = -1, j = -1;
+	while(true)
+	{
+		bool f1 = false;
+		bool f2 = false;
+		while(i<n-1 && mct < dcmt)
+		{
+			i++;
+			mp2[s[i]]++;
+			if(mp2[s[i]]<=mp1[s[i]])
+			{
+				mct++;
+			}
+			f1 = true;
+		}
+		//cout << "i" << i <<"\n";
+
+		while(j<=i && mct==dcmt)
+		{	
+			string temp = s.substr(j+1,i+1-j-1);
+			if(ans.length()==0 || temp.length()<ans.length())
+			{
+				ans = temp;
+			}
+			j++;
+			if(mp2[s[j]]==1)
+			{
+				mp2[s[j]] = 0;
+			}
+			else
+			{
+				mp2[s[j]]--;
+			}
+			if(mp2[s[j]]<mp1[s[j]])
+			{
+				mct--;
+			}
+			f2 = true;
+		}
+		if(f1== false && f2 == false)
+		{
+			break;
+		}
+	}
+	cout << ans <<"\n";
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}	

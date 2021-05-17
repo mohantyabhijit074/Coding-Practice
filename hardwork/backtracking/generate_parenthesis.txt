@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+void findall(string cur,int o,int c,vector<string> &res,int n)
+{
+	if(cur.length()==n*2)
+	{
+		res.push_back(cur);
+		return;
+	}
+	if(o<n)
+		findall(cur+"(",o+1,c,res,n);
+	if(c<o)
+		findall(cur+")",o,c+1,res,n);
+}
+
+void solve()
+{
+	int n;
+	cin >> n;
+	vector<string> res;
+	findall("(",1,0,res,n);
+	for(auto it : res)
+	{
+		cout << it <<"\n";
+	}
+	cout <<"\n";
+}	
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}

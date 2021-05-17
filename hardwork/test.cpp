@@ -4,38 +4,36 @@ using namespace std;
 #define mod 1000000007
 #define ll long long
 
-vector<int> graph[100005];
-int dp[100005];
-int find_longest_path(int src)
-{
-	if(dp[src]!=-1) return dp[src];
-	int result = INT_MIN;
-	bool no_neighbour  = true;
-	for(int neighbour : graph[src])
-	{
-		no_neighbour = false;
-		result = max(result,find_longest_path(neighbour));
-
-	}
-	return no_neighbour ? dp[src] = 0 : dp[src] = result+1;
-}
 void solve()
 {
-	memset(dp,-1,sizeof(dp));
 	int n,m;
 	cin >> n >> m;
-	while(m--)
+	vector<int> arr(n);
+	vector<int> brr(m);
+	sort(arr.begin(),arr.end());
+	for(int i=0;i<n;i++)
 	{
-		int u,v;
-		cin >> u >> v;
-		graph[u].push_back(v);
+		cin >> arr[i];
 	}
-	int result = INT_MIN;
-	for(int i=1;i<=n;i++)
+	for(int j=0;j<m;j++)
 	{
-		result = max(result,find_longest_path(i));
+		cin >> brr[j];
 	}
-	cout << result <<"\n";
+	vector<int> res(m,0);
+	int j = 0;
+	for(int i=0;i<m;i++)
+	{
+		while(j<n && arr[j]<brr[i])
+		{
+			j++;
+		}
+		res[i] = j;
+	}
+	for(auto i : res)
+	{
+		cout << i <<" ";
+	}
+	cout <<"\n";
 	return;
 }
 int main()

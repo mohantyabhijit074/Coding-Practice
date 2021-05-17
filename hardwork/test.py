@@ -1,14 +1,8 @@
-n,m = map(str,input().split())
-m = int(m)
-for i in range(m):
-    n = list(str(n))
-    k = n.copy()
-    n.sort()
-    k.sort(reverse=True)
-    n = int("".join(n))
-    k = int("".join(k))
-    n = abs(n-k)
-    if n==0:
-        break 
-print(n)    
-    
+n = int(input())
+li = []
+for i in range(n):
+    a,b = map(str,input().split())
+    b = int(b)
+    li.append([a,b])
+li.sort(key = lambda x:x[1])
+print(li[-2][0])

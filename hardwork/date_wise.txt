@@ -48,3 +48,22 @@ https://atcoder.jp/contests/dp/tasks/dp_f
 
 16/05/2021
 https://atcoder.jp/contests/dp/tasks/dp_g
+https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+https://leetcode.com/problems/rotate-array/
+    - reverse three times solution
+https://atcoder.jp/contests/dp/tasks/dp_h
+https://atcoder.jp/contests/dp/tasks/dp_i
+https://leetcode.com/problems/partition-equal-subset-sum/
+(small practice session)
+    https://codeforces.com/contest/1525/problem/A
+    https://codeforces.com/contest/1525/problem/B
+    https://atcoder.jp/contests/abc201/tasks/abc201_b
+
+17/05/2021
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
+https://leetcode.com/problems/minimum-window-substring/
+https://leetcode.com/problems/subsets/
+https://leetcode.com/problems/generate-parentheses/
+https://leetcode.com/problems/longest-valid-parentheses/
+https://leetcode.com/problems/find-peak-element/
+https://codeforces.com/edu/course/2/lesson/9/1/practice/contest/307092/problem/B
