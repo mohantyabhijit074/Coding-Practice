@@ -67,3 +67,20 @@ https://leetcode.com/problems/generate-parentheses/
 https://leetcode.com/problems/longest-valid-parentheses/
 https://leetcode.com/problems/find-peak-element/
 https://codeforces.com/edu/course/2/lesson/9/1/practice/contest/307092/problem/B
+https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/A
+https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/B
+https://codeforces.com/contest/1492/problem/B
+
+18/05/2021
+generate lexicographical ordering till n
+https://leetcode.com/problems/first-missing-positive/
+https://leetcode.com/problems/regular-expression-matching/ (hard prblm)
+https://leetcode.com/problems/valid-palindrome/
+https://leetcode.com/problems/remove-duplicate-letters/
+https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
+https://leetcode.com/problems/find-the-most-competitive-subsequence/
+
+19/05/2021
+https://codeforces.com/contest/1447/problem/B
+https://codeforces.com/contest/1447/problem/A
+https://codeforces.com/contest/1447/problem/C
