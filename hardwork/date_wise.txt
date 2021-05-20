@@ -84,3 +84,22 @@ https://leetcode.com/problems/find-the-most-competitive-subsequence/
 https://codeforces.com/contest/1447/problem/B
 https://codeforces.com/contest/1447/problem/A
 https://codeforces.com/contest/1447/problem/C
+String miscellenous problem
+https://leetcode.com/problems/max-consecutive-ones-iii/ (imp)
+https://www.spoj.com/problems/NOTATRI/
+TODO: atcoder dp j shushi (probability
+https://atcoder.jp/contests/arc115/tasks/arc115_a
+https://leetcode.com/problems/sliding-window-maximum/ (hard and important)
+https://leetcode.com/problems/min-stack/submissions/
+https://leetcode.com/problems/arranging-coins/
+
+20/05/2021
+https://leetcode.com/problems/binary-tree-postorder-traversal/
+https://leetcode.com/problems/remove-linked-list-elements/
+https://leetcode.com/problems/next-greater-node-in-linked-list/
+https://leetcode.com/problems/isomorphic-strings/
+https://leetcode.com/problems/valid-perfect-square/
+https://leetcode.com/problems/intersection-of-two-arrays-ii/
+https://leetcode.com/problems/find-common-characters/
+https://codeforces.com/contest/1527/problem/A
+https://codeforces.com/contest/1527/problem/B1

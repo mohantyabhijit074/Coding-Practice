@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+    int n;
+    cin >> n;
+    if(n==0)
+    {
+        exit(0);
+    }
+    vector<int> arr(n);
+    for(int i=0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    sort(arr.begin(),arr.end());
+    int ans = 0;
+    for(int i = 0;i<n;i++)
+    {
+        for(int j = i+1;j<n;j++)
+        {
+            int x = arr[i] + arr[j];
+            int y = upper_bound(arr.begin(),arr.end(),x) - arr.begin();
+            if(y!=n)
+            {
+                ans+=(n-y);
+            }
+        }
+    }
+    cout << ans <<"\n";
+    
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t)
+    {
+        solve();
+    }
+    return 0;
+}

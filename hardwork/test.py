@@ -1,29 +1,20 @@
-import math
 t = int(input())
 for _ in range(t):
-    n,w = map(int,input().split())
+    n = int(input())
     li = list(map(int,input().split()))
-    k = li.copy()
-    k.sort()
-    if k[0]>w:
-        print(-1)
-    elif sum(li)<w/2:
-        print(-1)
-    else:
-        temp = []
-        f = 0
-        for i in range(n):
-            temp.append([i,li[i]])
-        #print(temp)
-        ans = []
-        temp.sort(key = lambda x:x[1],reverse = True)
-        s = 0
-        for i in range(n):
-            if temp[i][1]+s<=w:
-                s+=temp[i][1]
-                ans.append(temp[i][0]+1)
-        if s<math.ceil(w/2):
-            print(-1)
+    d = {}
+    for i in range(n):
+        if li[i] not in d:
+            d[li[i]] = [i]
         else:
-            print(len(ans))
-            print(*ans)
+            d[li[i]].append(i)
+    ans = 0
+    #print(d)
+    for i in d:
+        k = d[i]
+        if len(k)>1:
+            for j in range(0,len(k)):
+                for m in range(j+1,len(k)):
+                    ans+=k[m] - k[j]
+    print(ans)
+        

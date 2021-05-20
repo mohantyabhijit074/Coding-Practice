@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+vector<vector<ll>> preprocess(string s)
+{
+    int n = s.size();
+    vector<vector<ll>> prefix(26,vector<ll>(n,0));
+    for(int i=0;i<26;i++)
+    {
+        char ch = 'a' + i;
+        for(int j = 0;j<n;j++)
+        {
+            if(s[j]==ch)
+            {
+                prefix[i][j] = 1;
+            }
+        }
+        for(int j = 1;j<n;j++)
+        {
+            prefix[i][j]+=prefix[i][j-1];
+        }
+    }
+    return prefix;
+}
+
+void solve()
+{
+    string s;
+    cin >> s;
+    int l,r;
+    int q;
+    cin >> q;
+    vector<vector<ll>> prefix = preprocess(s);
+    while(q--)
+    {
+        cin >> l >> r;
+        l--;
+        r--;
+        ll ans = 0;
+        for(int i =0;i<26;i++)
+        {
+            int y = 0;
+            if(l-1>=0)
+                y = prefix[i][l-1];
+            int sum = prefix[i][r] - y;
+            ans+=sum*(sum+1)/2;
+        }
+        cout << ans <<"\n";
+    }
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
