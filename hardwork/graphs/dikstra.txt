@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+ll n,m;
+vector<vector<pair<ll,ll>>> g;
+vector<ll> dist;
+#define inf ll_MAX
+const ll infinity = 1e17;
+void dikstra()
+{
+    for(ll i = 0;i<=n;i++)
+    {
+        dist[i] = infinity;
+    }
+    priority_queue<pair<ll,ll>,vector<pair<ll,ll>>,greater<pair<ll,ll>> > pq;
+    dist[1] = 0;
+    pq.push({0,1});
+    while(!pq.empty())
+    {
+        ll u = pq.top().second;
+        ll d = pq.top().first;
+        pq.pop();
+        if(dist[u]<d) continue; // when the procesing node distance is smaller than distance then continue
+        for(auto e:g[u])
+        {   
+            ll v = e.first;
+            ll c = e.second;
+            if(dist[v]<=c+d) continue;
+            else
+            {
+                dist[v] = c+d;
+                pq.push({dist[v],v});
+            }
+        }
+    }
+}
+
+void solve()
+{
+    cin >> n >> m;
+    g.resize(n+1);
+    dist.resize(n+1);
+    for(ll i = 0;i<m;i++)
+    {
+        ll u,v,c;
+        cin >> u >> v >> c;
+        g[u].push_back({v,c});
+    }
+    dikstra();
+    for(ll i = 1;i<=n;i++)
+    {
+        cout << dist[i] <<" ";
+    }
+    cout <<"\n";
+    return;
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
