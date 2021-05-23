@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+ll n,m;
+vector<set<pair<ll,ll>>> g;
+vector<ll> dist;
+vector<ll> par;
+void diktra()
+{
+    priority_queue<pair<ll,ll>, vector<pair<ll,ll>>, greater<pair<ll,ll>>> pq;
+    pq.push({0,1});
+    dist[1] = 0;
+    par[1] = -1;
+
+    while(!pq.empty())
+    {
+        ll u = pq.top().second;
+        ll d = pq.top().first;
+        pq.pop();
+        if(dist[u] < d)continue;
+        for(auto e:g[u])
+        {
+            int v = e.first;
+            int c = e.second;
+            if(dist[v] > dist[u]+c)
+            {
+                dist[v] = dist[u] + c;
+                pq.push({dist[v],v});
+                par[v] = u;
+            }
+        }
+    }
+}
+
+void solve()
+{
+
+    cin >> n >> m;
+    dist.resize(n+1);
+    par.resize(n+1);
+    for(int i = 1;i<=n;i++)
+    {
+        par[i] = -1;
+    }
+    g.resize(n+1);
+    for(ll i = 0;i<m;i++)
+    {
+        ll u,v;
+        cin >> u >> v;
+        g[u].insert({v,-1});
+    }
+    diktra();
+    if(dist[n]==0)
+    {
+        cout <<"IMPOSSIBLE\n";
+        return ;
+    }
+    cout << 1 + dist[n]*(-1) <<"\n";
+    vector<ll> ans;
+    ll temp = n;
+    while(temp!=-1)
+    {
+        ans.push_back(temp);
+        temp = par[temp];
+    }
+    reverse(ans.begin(),ans.end());
+    for(auto it : ans)
+    {
+        cout << it <<" ";
+    }
+    cout <<"\n";
+    return;
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

@@ -3,56 +3,54 @@ using namespace std;
 #include<bits/stdc++.h>
 #define mod 1000000007
 #define ll long long
-ll inf = 1e15;
 
 void solve()
 {
-    ll n,m,q;
-    cin >> n >> m >> q;
-    vector<vector<ll>> g(n+1,vector<ll>(n+1));
-    for(int i = 1;i<=n;i++)
+    int n;
+    cin >> n;
+    vector<string> arr(n);
+    vector<pair<int,int>> p;
+    for(int i = 0;i<n;i++)
     {
-        for(int j = i+1;j<=n;j++)
+        cin >> arr[i];
+        for(int j=0;j<n;j++)
         {
-            g[i][j] = g[j][i] = inf;
-        }
-    }
-    for(ll i = 0;i<m;i++)
-    {
-        ll u,v,c;
-        cin >> u >> v >> c;
-        g[u][v] = g[v][u] = min(g[u][v],c);
-    }
-    for(ll k=1;k<=n;k++)
-    {
-        for(ll i = 1;i<=n;i++)
-        {
-            for(ll j = 1;j<=n;j++)
+            if(arr[i][j]=='*')
             {
-                g[i][j] = min(g[i][j],g[i][k] + g[k][j]);
+                p.push_back({i,j});
             }
         }
     }
-    for(ll i = 0;i<q;i++)
+    p.push_back(p[0]);
+    p.push_back(p[1]);
+    if(p[0].first==p[1].first)
     {
-        ll u,v;
-        cin >> u >> v;
-        if(g[u][v]==inf)
-        {
-            g[u][v] = -1;
-        }
-        cout << g[u][v] <<"\n";
+        p[2].first = (p[2].first+1)%n;
+        p[3].first = (p[3].first+1)%n;
     }
-    return;
-
+    else if(p[0].second==p[1].second)
+    {
+        p[2].second = (p[2].second+1)%n;
+        p[3].second = (p[3].second+1)%n;
+    }
+    else
+    {
+        swap(p[2].first,p[3].first);
+    }
+    arr[p[2].first][p[2].second] = '*';
+    arr[p[3].first][p[3].second] = '*';
+    for(auto it : arr)
+    {
+        cout << it <<"\n";
+    }
 }
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     ll t;
-    //cin >> t;
-    t = 1;
+    cin >> t;
+    //t = 1;
     while(t--)
     {
         solve();

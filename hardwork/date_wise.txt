@@ -115,3 +115,23 @@ https://leetcode.com/problems/course-schedule-ii/
 https://cses.fi/problemset/task/1679/
 https://cses.fi/problemset/task/1671/
 https://cses.fi/problemset/task/1672/
+https://cses.fi/problemset/task/1673/
+
+22/05/2021
+https://www.codechef.com/problems/SUBINC
+https://www.codechef.com/problems/DSTROY
+https://codeforces.com/contest/1375/problem/B
+https://www.spoj.com/problems/RMQSQ/
+https://cses.fi/problemset/task/1647/
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+https://cses.fi/problemset/task/1681/
+https://leetcode.com/problems/rectangle-overlap/
+https://cses.fi/problemset/task/1680/ (TLE on only one big test case)
+https://codeforces.com/contest/1512/problem/B
+
+23/05/2021
+https://leetcode.com/contest/weekly-contest-242/problems/longer-contiguous-segments-of-ones-than-zeros/
+https://leetcode.com/contest/weekly-contest-242/problems/minimum-speed-to-arrive-on-time/
+https://leetcode.com/contest/weekly-contest-241/problems/sum-of-all-subset-xor-totals/
+https://leetcode.com/contest/weekly-contest-241/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/
+https://leetcode.com/problems/finding-pairs-with-a-certain-sum/
