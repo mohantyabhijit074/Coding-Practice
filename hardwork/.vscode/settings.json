@@ -4,6 +4,9 @@
         "xstring": "cpp",
         "cstdlib": "cpp",
         "vector": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "xhash": "cpp"
     }
 }

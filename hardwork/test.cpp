@@ -3,46 +3,47 @@ using namespace std;
 #include<bits/stdc++.h>
 #define mod 1000000007
 #define ll long long
+const ll N = 2e5+10;
+vector<ll> g[N];
+ll arr[2][N];
+ll dp[2][N];
+
+void dfs(ll v,ll par=-1)
+{
+    dp[0][v] = dp[1][v] = 0;
+    for(ll u : g[v])
+    {
+        if(u==par)
+            continue;
+        dfs(u,v);
+        dp[0][v] += max(dp[1][u]+abs(arr[0][v]-arr[1][u]),dp[0][u]+abs(arr[0][v]-arr[0][u]));
+        dp[1][v] += max(dp[1][u]+abs(arr[1][v]-arr[1][u]),dp[0][u]+abs(arr[1][v]-arr[0][u]));
+    }
+}
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    vector<string> arr(n);
-    vector<pair<int,int>> p;
-    for(int i = 0;i<n;i++)
+    //g.resize(n+2);
+    fill(g+1,g+n+1,vector<ll>());
+    for(ll i = 1;i<=n;i++)
     {
-        cin >> arr[i];
-        for(int j=0;j<n;j++)
-        {
-            if(arr[i][j]=='*')
-            {
-                p.push_back({i,j});
-            }
-        }
+        ll l,r;
+        cin >> l >> r;
+        arr[0][i] = l;
+        arr[1][i] = r;
     }
-    p.push_back(p[0]);
-    p.push_back(p[1]);
-    if(p[0].first==p[1].first)
+    for(ll i = 0;i<n-1;i++)
     {
-        p[2].first = (p[2].first+1)%n;
-        p[3].first = (p[3].first+1)%n;
+        ll u,v;
+        cin >> u >> v;
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
-    else if(p[0].second==p[1].second)
-    {
-        p[2].second = (p[2].second+1)%n;
-        p[3].second = (p[3].second+1)%n;
-    }
-    else
-    {
-        swap(p[2].first,p[3].first);
-    }
-    arr[p[2].first][p[2].second] = '*';
-    arr[p[3].first][p[3].second] = '*';
-    for(auto it : arr)
-    {
-        cout << it <<"\n";
-    }
+    dfs(1);
+    cout << max(dp[0][1],dp[1][1]) <<"\n";
+
 }
 int main()
 {
