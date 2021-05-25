@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+const int inf = 1e18;
+
+ll total = 0;
+
+ll find_min(vector<ll>& arr,int r,ll cur)
+{
+    if(r==0)
+    {
+        return abs((total-cur)-cur);
+    }
+    return min(find_min(arr,r-1,cur+arr[r-1]),find_min(arr,r-1,cur));
+}
+
+void solve()
+{
+    int n;
+    cin >> n;
+    vector<ll> arr(n);
+    for(int i = 0;i<n;i++)
+    {
+        cin >> arr[i];
+        total+=arr[i];
+    }
+    cout << find_min(arr,n,0) <<"\n";
+    return;
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

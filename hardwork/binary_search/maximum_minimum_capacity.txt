@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+bool feasible(vector<int>&arr,int k,int res)
+{
+    int w = 1;
+    int s = 0;
+    for(int i=0 ; i<arr.size();i++)
+    {
+        if(s+arr[i]>res)
+        {
+            w++;
+            s = arr[i];
+        }
+        else
+        {
+            s+=arr[i];
+        }
+    }
+    return w<=k;
+}
+
+int minimum_weight(vector<int>& arr,int n,int k)
+{
+    int res = 0;
+    int minimum = *max_element(arr.begin(),arr.end());
+    int maximum = 0;
+    for(auto it : arr)
+    {
+        maximum+=it;
+    }
+    while(minimum<=maximum)
+    {
+        int mid = minimum + (maximum-minimum)/2;
+        if(feasible(arr,k,mid))
+        {
+            res = mid;
+            maximum = mid-1;
+        }
+        else 
+        {
+            minimum = mid+1;
+        }
+    }
+    return res;
+}
+
+void solve()
+{
+    int n,k;
+    cin >> n >> k;
+    vector<int> arr(n);
+    for(int i = 0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    cout << minimum_weight(arr,n,k) <<"\n";
+    return;
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

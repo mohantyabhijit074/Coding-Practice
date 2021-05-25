@@ -154,3 +154,11 @@ https://codeforces.com/contest/1529/problem/C
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 https://leetcode.com/problems/maximum-subarray-min-product/
 https://leetcode.com/problems/word-break/
+https://cses.fi/problemset/task/1636/
+https://cses.fi/problemset/task/1637/
+https://cses.fi/problemset/task/1145/ (nlogn method for longest increasing subsequence)
+https://cses.fi/problemset/task/1623/
+https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1
+https://leetcode.com/problems/kth-largest-element-in-a-stream/
+https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/

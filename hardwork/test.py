@@ -1,15 +1,11 @@
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    li = list(map(int,input().split()))
-    li.sort()
-    ans = 0
-    while (1):
-        x = li[0]+li[-1]
-        x = x/2
-        if li[-1]>x:
-            li = li[:-1]
-            ans+=1 
-        else:
-            break
-    print(ans)
+n = int(input())
+c = 0
+while n:
+    s = str(n)
+    s = list(s)
+    k = max(s)
+    n = "".join(s)
+    #print(int(n)-int(k))
+    n = int(n)-int(k)
+    c+=1
+print(c)
