@@ -1,0 +1,101 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void build(ll *arr,ll *segtree,ll s,ll e,ll tidx)
+{   //base case
+    if(s==e)
+    {
+        segtree[tidx] = arr[s];
+        return;
+    }
+    ll mid = (s+e)/2;
+    build(arr,segtree,s,mid,2*tidx);
+    build(arr,segtree,mid+1,e,2*tidx+1);
+
+    segtree[tidx] = segtree[2*tidx]^segtree[2*tidx+1];
+}
+
+void update(ll* arr,ll *tree,ll s,ll e,ll tidx,ll idx,ll val)
+{
+    if(s==e)
+    {
+        arr[idx] = val;
+        tree[tidx] = val;
+        return; 
+    }
+    ll mid = (s+e)/2;
+    if(idx>mid)
+    {   
+        update(arr,tree,mid+1,e,2*tidx+1,idx,val);
+    }
+    else
+    {
+        update(arr,tree,s,mid,2*tidx,idx,val);
+    }
+    tree[tidx] = tree[2*tidx]^tree[2*tidx+1];
+}
+
+ll query(ll *tree,ll s,ll e,ll tidx,ll left,ll right)
+{
+    if(s>right || e<left)
+    {   //complete outside
+        return 0;
+    }
+    if(s>=left && e<=right)
+    {
+        //complete inside
+        return tree[tidx];
+    }
+    ll mid = (s+e)/2;
+    ll a1 = query(tree,s,mid,2*tidx,left,right);
+    ll a2 = query(tree,mid+1,e,2*tidx+1,left,right);
+    return a1^a2;
+}
+void solve()
+{
+    ll n;
+    cin >> n;
+    ll q;
+    cin >> q;
+    ll *arr = new ll[n];
+    for(ll i = 0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    ll *seg_tree = new ll[4*n];
+    build(arr,seg_tree,0,n-1,1);
+    while(q--)
+    {
+        //ll type;
+        //cin >> type;
+        //if(type==2)
+        //{
+            ll l,r;
+            cin >> l >> r;
+            cout << query(seg_tree,0,n-1,1,l-1,r-1) <<"\n";
+        //}
+        // else
+        // {
+        //     ll i,v;
+        //     cin >> i >> v;
+        //     update(arr,seg_tree,0,n-1,1,i-1,v);
+        // }
+    }
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

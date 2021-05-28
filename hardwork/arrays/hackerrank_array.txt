@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+    int n;
+    cin >> n;
+    vector<int> arr(n+1,0);
+    int q;
+    cin >> q;
+    int m = 0,ans = 0;
+    for(int i = 0;i<q;i++)
+    {
+        int a,b,s;
+        cin >> a >> b >> s;
+        arr[a] += s;
+     
+        if(b+1<=n)
+        {
+            arr[b+1]-=s;
+        }
+    }
+    for(int i = 1;i<arr.size();i++)
+    {
+        m+=arr[i];
+        ans = max(ans,m);
+    }
+    cout << ans <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

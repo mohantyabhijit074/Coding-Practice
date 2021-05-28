@@ -4,61 +4,38 @@ using namespace std;
 #define mod 1000000007
 #define ll long long
 
-vector<int> arr;
-
-int partition(int l,int h)
-{
-    int pivot = arr[l];
-    int i = l;
-    int j= h;
-    while(i<j)
+int maximumToys(vector<ll> prices, ll k) {
+    sort(prices.begin(),prices.end());
+    for(int i = 1;i<prices.size();i++)
     {
-        while(arr[i]<=pivot)i++;
-        while(arr[j]>pivot)j--;
-        if(i<j)
-        {
-            swap(arr[i],arr[j]);
-        }
+        prices[i]+=prices[i-1];
+		cout << prices[i] <<"\n";
     }
-    swap(arr[l],arr[j]);
-    return j;
+    int idx = upper_bound(prices.begin(),prices.end(),k)-prices.begin();
+    return idx;
 }
 
-void quick_sort(int l,int h)
-{
-    if(l<h)
-    {
-        int pivot = partition(l,h);
-        quick_sort(l,pivot-1);
-        quick_sort(pivot+1,h);
-    }
-}
 void solve()
 {
-    int n;
-    cin >> n;
-    arr.resize(n);
-    for(int i = 0;i<n;i++)
-    {
-        cin >> arr[i];
-    }
-    quick_sort(0,n-1);
-    for(auto it: arr)
-    {
-        cout << it <<" ";
-    }
-    cout <<"\n";
+	int n,k;
+	cin >> n >> k;
+	vector<ll> arr(n);
+	for(int i = 0;i<n;i++)
+	{
+		cin >> arr[i];
+	}
+	cout << maximumToys(arr,k) <<"\n";
 }
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    ll t;
-    //cin >> t;
-    t = 1;
-    while(t--)
-    {
-        solve();
-    }
-    return 0;
-}
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}	

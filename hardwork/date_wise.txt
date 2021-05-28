@@ -162,3 +162,31 @@ https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1
 https://leetcode.com/problems/kth-largest-element-in-a-stream/
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+26/05/2021
+https://leetcode.com/problems/critical-connections-in-a-network/
+https://practice.geeksforgeeks.org/problems/majority-element-1587115620/1
+https://codeforces.com/contest/1196/problem/C
+https://codeforces.com/contest/1196/problem/B
+https://codeforces.com/contest/1196/problem/D1
+https://codeforces.com/contest/1196/problem/D2
+https://codeforces.com/contest/1199/problem/A
+https://codeforces.com/contest/1287/problem/B
+
+27/05/2021
+https://leetcode.com/problems/squares-of-a-sorted-array/
+https://practice.geeksforgeeks.org/problems/container-with-most-water0535/1# (two pointers)
+https://leetcode.com/problems/most-profit-assigning-work/
+https://www.hackerrank.com/challenges/crush/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
+Segment tree implementation
+https://www.hackerearth.com/practice/data-structures/advanced-data-structures/segment-trees/practice-problems/algorithm/shivam-and-expensive-birthday-gift-da58b2f0/
+https://cses.fi/problemset/task/1648/
+https://cses.fi/problemset/task/1649/
+https://cses.fi/problemset/task/1650/
+https://www.spoj.com/problems/GSS1/ (important segment tree implementation)
+
+28/05/2021
+https://www.hackerrank.com/challenges/mark-and-toys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+https://www.hackerrank.com/challenges/minimum-swaps-2/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
+https://www.hackerrank.com/challenges/new-year-chaos/problem
+https://www.hackerrank.com/challenges/max-array-sum/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dynamic-programming

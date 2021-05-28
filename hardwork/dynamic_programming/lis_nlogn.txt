@@ -15,7 +15,7 @@ void solve()
     }
     vector<int> seq;
     seq.emplace_back(arr[0]);
-    for(int i =1;i<n;i++)
+    for(int i=1;i<n;i++)
     {
         if(seq.back()<arr[i])
         {
