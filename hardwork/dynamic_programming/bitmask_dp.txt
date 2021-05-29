@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+	ll n,m;
+	cin >> n >> m;
+	vector<int> arr(n);
+	vector<int> brr(m);
+	for(int i = 0;i<n;i++)
+	{
+		cin >> arr[i];
+	}
+	for(int j = 0;j<m;j++)
+	{
+		cin >> brr[j];
+	}
+	int M = 1<< n;
+	vector<vector<int>> dp(n+1,vector<int>(M,10000000000));
+	dp[0][0] = 0;
+	for(int i = 1;i<=n;i++)
+	{
+		int cur = brr[i-1];
+		for(int mask = 0;mask<M;mask++)
+		{
+			for(int j = 0;j<n;j++)
+			{
+				if(!(mask&(1<<j))) continue;
+				dp[i][mask] = min(dp[i][mask],dp[i-1][mask^(1<<j)]+(arr[j]^cur));
+			}
+		}
+	}
+	cout << dp.back().back() <<"\n";
+	return;
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}
