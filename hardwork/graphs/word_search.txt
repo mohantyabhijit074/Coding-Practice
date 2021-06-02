@@ -1,83 +1,82 @@
-class Solution {
-    struct node
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+bool dfs(vector<vector<char>> &grid,string s,int i,int j,int k)
+{
+    if(k==s.size())
     {
-        char c;
-        int ends;
-        string word;
-        node *child[26];    
-    };
-    struct node *getNode(char c)
-    {
-        node *newnode = new node;
-        newnode->c = c;
-        newnode->ends = 0;
-        newnode->word = "";
-        for(int i=0;i<26;i++)
-        {
-            newnode->child[i] = NULL;
-        }
-        return newnode;
+        return true;
     }
-    node *root = getNode('/');
-    //trie insert
-    void insert(string s)
+    if(i<0 || i>=grid.size() || j<0 || j>=grid[0].size() || grid[i][j]!=s[k])
     {
-        node *curr = root;
-        int index = 0;
-        int i =0;
-        while(s[i])
-        {
-            index = s[i]-'a';
-            if(curr->child[index]==NULL)
-                curr->child[index] = getNode(s[i]);
-            curr = curr->child[index];
-            i+=1;
-        }
-        curr->ends += 1;
-        curr->word = s;
+        return false;
     }
     
-    void solve(vector<vector<char>> &board,int i,int j,int r,int c,vector<string>&ans,node* curr)
+    char temp = grid[i][j];
+    grid[i][j]='$';
+    bool f = dfs(grid,s,i+1,j,k+1) || 
+    dfs(grid,s,i-1,j,k+1) ||
+    dfs(grid,s,i,j+1,k+1) || 
+    dfs(grid,s,i,j-1,k+1);
+    grid[i][j] = temp;
+    return f;
+}
+void solve()
+{
+    int n,m;
+    cin >> n >> m;
+    vector<vector<char>> arr(n,vector<char>(m));
+    for(int i = 0;i<n;i++)
     {
-        int index = board[i][j]-'a';
-        if(board[i][j]=='$' || curr->child[index]==NULL || i<0 || i>=r || j<0 || j>=c)
-            return;
-        curr = curr->child[index];
-        if(curr->ends>0)
+        for(int j = 0;j<m;j++)
         {
-            ans.push_back(curr->word);
-            curr->ends-=1;
+            cin >> arr[i][j];
         }
-        
-        char ch = board[i][j];
-        board[i][j] = '$';
-        if(i>0)     //TOP
-            solve(board,i-1,j,r,c,ans,curr);
-        if(i<r-1)   //DOWN
-            solve(board,i+1,j,r,c,ans,curr);
-        if(j>0)     //LEFT
-            solve(board,i,j-1,r,c,ans,curr);
-        if(j<c-1)   //RIGHT
-            solve(board,i,j+1,r,c,ans,curr);
-        board[i][j] = ch;
     }
-public:
-    
-    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        int r = board.size();
-        int c = board[0].size();
-        for(int i = 0;i<words.size();i++)
+    string s;
+    cin >> s;
+    vector<pair<int,int>> v;
+    for(int i = 0;i<n;i++)
+    {
+        for(int j = 0;j<m;j++)
         {
-            insert(words[i]);
-        }
-        vector<string> ans;
-        for(int i = 0;i<r;i++)
-        {
-            for(int j = 0;j<c;j++)
+            if(arr[i][j]==s[0])
             {
-                solve(board,i,j,r,c,ans,root);
+                v.push_back({i,j});
             }
         }
-        return ans;
     }
-};
+    int f = 0;
+    for(auto it : v)
+    {
+        int k =0;
+        //cout << it.first <<" "<<it.second<<"\n";
+        if(dfs(arr,s,it.first,it.second,k))
+        {
+           
+            cout << "YES\n";
+            f = 1;
+            return;
+        }
+    }
+    if(f==0)
+    {
+        cout <<"NO\n";
+        return;
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
