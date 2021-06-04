@@ -1,4 +1,12 @@
 import random 
-print(15)
-for i in range(15):
-    print(random.randint(0,1000))
+print(100)
+for i in range(100):
+    x = random.randint(1,100)
+    y = random.randint(1,x)
+    li = []
+    print(x,y,end=" ")
+    print()
+    for j in range(x):
+        print(random.randint(1,100),end=" ") 
+    print()
+

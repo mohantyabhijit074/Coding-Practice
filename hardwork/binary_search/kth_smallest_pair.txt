@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+int kth_smallest(vector<int>& arr,int k)
+{
+    sort(arr.begin(),arr.end());
+    int l = 0;
+    int r = 1e6+5;
+    while(l<=r)
+    {
+        int mid = l + (r-l)/2;
+        int count = 0,i = 0;
+        for(int j = 0;j<arr.size();j++)
+        {
+            while(arr[j]-arr[i]>mid)
+                i++;
+            count+=(j-i);
+        }
+        if(count>=k)
+        {
+            r = mid-1;
+        }
+        else
+        {
+            l = mid+1;
+        }
+        //cout << mid << l << r <<"\n";
+    }
+    return l;
+}
+
+void solve()
+{
+    int n,k;
+    cin >> n >> k;
+    vector<int> arr(n);
+    for(int i = 0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    cout << kth_smallest(arr,k) <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

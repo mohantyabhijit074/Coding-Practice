@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+int feasible(vector<ll>&arr,int mid,int c)
+{
+    int n = arr.size();
+    int w = 1;
+    int s = 0;
+    for(int i = 1;i<n && w<c;i++)
+    {
+        if(arr[i]-arr[s]>=mid)
+        {
+            s = i;
+            w++; 
+        }
+    }
+    return w>=c;
+}
+void solve()
+{
+    ll n,g;
+    cin >> n >> g;
+    vector<ll> arr(n);
+    for(int i = 0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    sort(arr.begin(),arr.end());
+    ll l = 0;
+    ll r = *max_element(arr.begin(),arr.end());
+    ll best = 0;
+    while(l<=r)
+    {
+        ll mid = l+(r-l)/2;
+        if(feasible(arr,mid,g))
+        {
+            best = mid;
+            l = mid+1;
+        }
+        else
+        {
+            r = mid-1;
+        }
+    }
+    cout << best <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    cin >> t;
+    //t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
