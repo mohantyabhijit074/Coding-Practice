@@ -1,29 +1,32 @@
-def solve():
-    n = int(input())
-    li = list(map(int,input().split()))
-    i = 1
-    ans = 0
-    while i<len(li)-1:
-        #print(li)
-        if len(set(li))==1:
-            break
-        if li[i+1]>li[i-1]:
-            li[i-1]+=li[i]
-            li.pop(i)
-            ans+=1
-        elif li[i+1]<li[i-1]:
-            li[i+1]+=li[i]
-            li.pop(i)
-            ans+=1
-        else:
-            i+=1
-    if len(set(li))==1:
-        print(ans)
-    else:
-        if len(li)==2:
-            print(ans+1)
-        elif len(li)==3:
-            print(ans+2)
 t = int(input())
 for _ in range(t):
-    solve()
+    n = int(input())
+    s = input()
+    res = [0]*n 
+    res[0] = 1 
+    d = 0
+    K_count = 0
+    dictionary = {}
+    l = 0
+    m = 0
+    for i in range(n):
+        if s[i] == 'D':
+            d+=1 
+        else:
+            K_count+=1 
+        if K_count==0 or d==0:
+            if 0 not in dictionary:
+                dictionary[0] = 1 
+            else:
+                dictionary[0] +=1 
+            m = dictionary[0]
+        else:
+            l = d/K_count
+            if l not in dictionary:
+                dictionary[l] = 1 
+                m = 1
+            else:
+                dictionary[l] +=1 
+                m = dictionary[l]
+        res[i] = m
+    print(*res)

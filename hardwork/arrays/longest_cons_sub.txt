@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+int longest_sub(vector<int>&arr)
+{
+	set<int> s;
+	for(auto i:arr)
+	{
+		s.insert(i);
+	}
+	int ans = 0;
+	for(auto num : arr)
+	{
+		if(s.count(num-1)==0)
+		{
+			int cur = num;
+			int cur_len = 1;
+			while(s.count(cur+1))
+			{
+				cur++;
+				cur_len++;
+			}
+			ans = max(ans,cur_len);
+		}
+	}
+	return ans;
+}
+
+void solve()
+{	
+	int n;
+	cin >> n;
+	vector<int> arr(n);
+	for(int i = 0;i<n;i++)
+	{
+		cin >> arr[i];
+	}
+	cout << longest_sub(arr) <<"\n";
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}

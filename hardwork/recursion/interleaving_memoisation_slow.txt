@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+unordered_map<string,bool> mp;
+bool check_interleaving(string a,string b,string c,int l1,int l2,int l3,int p1,int p2,int p3)
+{
+    if(p3==l3)
+    {
+        return (p1==l1)&&(p2==l2)?true:false;
+    }
+    string key = to_string(p1)+"$"+to_string(p2)+"$"+to_string(p3);
+    if(mp.find(key)!=mp.end())
+    {
+        return mp[key];
+    }
+    if(p1==l1)
+    {
+        return mp[key] = b[p2]==c[p3]?check_interleaving(a,b,c,l1,l2,l3,p1,p2+1,p3+1):false;
+    }
+    if(p2==l2)
+    {
+        return mp[key] = a[p1]==c[p3]?check_interleaving(a,b,c,l1,l2,l3,p1+1,p2,p3+1):false;
+    }
+    bool one = false, two = false;
+    if(a[p1]==c[p3])
+    {
+        one = check_interleaving(a,b,c,l1,l2,l3,p1+1,p2,p3+1);
+    }
+    if(b[p2]==c[p3])
+    {
+        two = check_interleaving(a,b,c,l1,l2,l3,p1,p2+1,p3+1);
+    }
+    return mp[key] = one || two;
+}
+
+void solve()
+{
+    string a,b,c;
+    cin >> a >> b >> c;
+    int l1 = a.length();
+    int l2 = b.length();
+    int l3 = c.length();
+    cout << check_interleaving(a,b,c,l1,l2,l3,0,0,0);
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

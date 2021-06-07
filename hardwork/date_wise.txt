@@ -267,3 +267,32 @@ https://leetcode.com/problems/find-k-th-smallest-pair-distance/
 https://codeforces.com/contest/1462/problem/C
 Minimum Maximum Path (from unacademy)
 https://www.spoj.com/problems/AGGRCOW/
+https://leetcode.com/problems/interleaving-string/
+https://codeforces.com/contest/1535/problem/A
+https://codeforces.com/contest/1535/problem/B 
+https://codeforces.com/contest/1535/problem/C
+
+05/06/2021
+https://leetcode.com/problems/stone-game/
+https://leetcode.com/problems/stone-game-iii/ (Memoisation and bottom up)
+https://leetcode.com/problems/stone-game-ii/
+https://www.codechef.com/JUNE21B/problems/COCONUT
+https://www.codechef.com/JUNE21B/problems/CHFHEIST
+https://www.codechef.com/JUNE21B/problems/BITTUP
+https://www.codechef.com/JUNE21B/problems/SHROUTE
+https://www.codechef.com/JUNE21B/problems/OPTSET (Brute Force)
+
+06/07/2021
+https://cses.fi/problemset/task/1135
+https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1
+https://codeforces.com/contest/1536/problem/A
+https://codeforces.com/contest/1536/problem/B
+https://codeforces.com/contest/1536/problem/C
+https://www.codechef.com/problems/BPHC03
+
+07/07/2021
+https://leetcode.com/problems/longest-consecutive-sequence/
+https://leetcode.com/problems/min-cost-climbing-stairs/submissions/
+https://leetcode.com/problems/majority-element-ii/
+https://www.interviewbit.com/problems/search-for-a-range/
+https://www.interviewbit.com/problems/search-in-bitonic-array/
