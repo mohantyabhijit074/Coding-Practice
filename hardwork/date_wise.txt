@@ -282,7 +282,7 @@ https://www.codechef.com/JUNE21B/problems/BITTUP
 https://www.codechef.com/JUNE21B/problems/SHROUTE
 https://www.codechef.com/JUNE21B/problems/OPTSET (Brute Force)
 
-06/07/2021
+06/06/2021
 https://cses.fi/problemset/task/1135
 https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1
 https://codeforces.com/contest/1536/problem/A
@@ -290,9 +290,50 @@ https://codeforces.com/contest/1536/problem/B
 https://codeforces.com/contest/1536/problem/C
 https://www.codechef.com/problems/BPHC03
 
-07/07/2021
+07/06/2021
 https://leetcode.com/problems/longest-consecutive-sequence/
 https://leetcode.com/problems/min-cost-climbing-stairs/submissions/
 https://leetcode.com/problems/majority-element-ii/
 https://www.interviewbit.com/problems/search-for-a-range/
 https://www.interviewbit.com/problems/search-in-bitonic-array/
+https://www.interviewbit.com/problems/edit-distance/
+https://www.interviewbit.com/problems/length-of-longest-subsequence/
+https://codeforces.com/contest/1175/problem/D
+
+08/06/2021
+https://www.interviewbit.com/problems/combination-sum/
+https://www.interviewbit.com/problems/meeting-rooms/
+https://www.interviewbit.com/problems/highest-product/
+https://www.interviewbit.com/problems/max-sum-path-in-binary-tree/
+https://www.codechef.com/JUNE21B/problems/DUALDIST
+https://www.codechef.com/JUNE21B/problems/DAREA
+https://www.interviewbit.com/problems/distribute-candy/
+https://www.interviewbit.com/problems/disjoint-intervals/
+
+09/06/2021
+https://codeforces.com/contest/1213/problem/B
+https://www.hackerrank.com/challenges/jesse-and-cookies/problem
+https://www.interviewbit.com/problems/minimum-parantheses/
+https://www.interviewbit.com/problems/longest-palindromic-substring/
+https://leetcode.com/problems/jump-game-vi/
+https://www.interviewbit.com/problems/longest-common-subsequence/
+https://www.interviewbit.com/problems/longest-palindromic-subsequence/ (TODO)
+
+10/06/2021
+https://practice.geeksforgeeks.org/problems/sum-tree/1/?problemType=functional&difficulty[]=1&page=1&sortBy=submissions&query=problemTypefunctionaldifficulty[]1page1sortBysubmissions
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1/?problemType=functional&difficulty[]=1&page=1&sortBy=submissions&query=problemTypefunctionaldifficulty[]1page1sortBysubmissions#
+https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1/?problemType=functional&difficulty[]=1&page=1&sortBy=submissions&query=problemTypefunctionaldifficulty[]1page1sortBysubmissions
+https://codeforces.com/contest/1538/problem/A
+https://codeforces.com/contest/1538/problem/B 
+https://codeforces.com/contest/1538/problem/C 
+https://codeforces.com/contest/1538/problem/F
+https://leetcode.com/problems/furthest-building-you-can-reach/
+
+11/06/2021
+https://practice.geeksforgeeks.org/problems/subarrays-with-sum-k/1/#
+https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1#
+https://leetcode.com/problems/minimum-size-subarray-sum/
+https://www.interviewbit.com/problems/valid-path/
+https://leetcode.com/problems/coin-change/
+https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/D
+https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/C

@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+	string s;
+	cin >> s;
+	string ans ;
+	int n = s.length();
+	int lng = 0;
+	int l,r;
+	for(int i = 0;i<n;i++)
+	{
+		l = i;
+		r = i;
+		while(l>=0 && r<n && s[l]==s[r])
+		{
+			if(lng<r-l+1)
+			{
+				lng = r-l+1;
+				ans = s.substr(l,r-l+1);
+			}
+			
+		l--;
+		r++;
+		}
+	}
+	for(int i = 0;i<n;i++)
+	{
+		l = i;
+		r = i+1;
+		while(l>=0 && r<n && s[l]==s[r])
+		{
+			if(lng<r-l+1)
+			{
+				lng = r-l+1;
+				ans = s.substr(l,r-l+1);
+			}
+			
+		l--;
+		r++;
+		}
+	}
+	cout << ans <<"\n";
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}
