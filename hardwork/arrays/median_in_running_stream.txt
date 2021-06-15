@@ -1,0 +1,102 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+priority_queue<int> maxheap;
+priority_queue<int,vector<int>,greater<int>> minheap;
+void insertHeap(int &x)
+{
+    int lsize = maxheap.size();
+    int rsize = minheap.size();
+    if(lsize==0)
+    {
+        maxheap.push(x);
+    }   
+    else if(lsize==rsize)
+    {
+        if(x<minheap.top())
+        {
+            maxheap.push(x);
+        }
+        else
+        {
+            int temp = minheap.top();
+            minheap.pop();
+            maxheap.push(temp);
+            minheap.push(x);
+        }
+    }
+    else
+    {
+        if(rsize==0)
+        {
+            if(x>maxheap.top())
+            {
+                minheap.push(x);
+            }
+            else
+            {
+                int temp = maxheap.top();
+                maxheap.pop();
+                maxheap.push(x);
+                minheap.push(temp);
+            }
+        }
+        else if(x>=minheap.top())
+        {
+            minheap.push(x);
+        }
+        else
+        {
+            if(x<maxheap.top())
+            {
+                int temp = maxheap.top();
+                maxheap.pop();
+                maxheap.push(x);
+                minheap.push(temp);
+            }
+            else
+            {
+                minheap.push(x);
+            }
+        }
+    }
+}
+
+double find_median()
+{
+    int lsize = maxheap.size();
+    int rsize = minheap.size();
+    if(lsize > rsize)  //Return top of maxheap for odd no of elements
+        return double(maxheap.top());
+    else    //Else return avg of top of maxheap and minheap
+        return (double(maxheap.top())+double(minheap.top()))/2;
+}
+
+
+void solve()
+{
+    int n;
+    cin >> n;
+    for(int i = 0;i<n;i++)
+    {
+        int a;
+        cin >> a;
+        insertHeap(a);
+        cout << find_median() <<"\n";
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

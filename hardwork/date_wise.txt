@@ -337,3 +337,36 @@ https://www.interviewbit.com/problems/valid-path/
 https://leetcode.com/problems/coin-change/
 https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/D
 https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/C
+https://codeforces.com/problemset/problem/160/A
+
+12/06/2021
+https://www.hackerearth.com/problem/algorithm/range-sum-4/
+https://practice.geeksforgeeks.org/problems/count-all-possible-paths-from-top-left-to-bottom-right3011/1/?company[]=Cisco&company[]=Cisco&page=1&query=company[]Ciscopage1company[]Cisco
+https://practice.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1/?company[]=Cisco&company[]=Cisco&page=1&query=company[]Ciscopage1company[]Cisco
+https://practice.geeksforgeeks.org/problems/longest-palindromic-subsequence-1612327878/1#
+https://practice.geeksforgeeks.org/problems/kth-largest-element-in-a-stream2220/1/?company[]=Cisco&company[]=Cisco&page=1&query=company[]Ciscopage1company[]Cisco
+https://practice.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1
+https://www.hackerrank.com/challenges/find-maximum-index-product/problem
+https://codeforces.com/contest/1407/problem/A 
+
+13/06/2021
+https://codeforces.com/contest/1407/problem/B
+https://codeforces.com/contest/1407/problem/C
+hackerearth : Longest substring prblem 
+hackerearth : awesome sort problem
+https://leetcode.com/problems/make-array-strictly-increasing/
+https://leetcode.com/problems/minimum-number-of-refueling-stops/submissions/
+https://codeforces.com/contest/1534/problem/A
+https://codeforces.com/contest/1534/problem/C  
+
+14/06/2021
+https://codeforces.com/contest/1352/problem/B
+https://codeforces.com/contest/1352/problem/D
+https://leetcode.com/problems/find-the-student-that-will-replace-the-chalk/
+https://leetcode.com/problems/maximum-units-on-a-truck/
+https://leetcode.com/problems/house-robber-iii/submissions/
+https://leetcode.com/explore/featured/card/top-interview-questions-easy/94/trees/555/
+https://cses.fi/problemset/task/1093/
+https://www.codechef.com/problems/CM164364
+
+15/06/2021
