@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+bool transform(string a,string b)
+{
+    if(a==b)
+        return true;
+    unordered_map<char,char> mp;
+    for(int i = 0;i<a.length();i++) 
+    {
+        if(mp.find(a[i])!=mp.end() && mp[a[i]]!=b[i])
+            return false;
+        mp[a[i]]=b[i];
+    }
+    unordered_set<char> s;
+    for(auto it = mp.begin();it!=mp.end();it++)
+    {
+        s.insert(it->second);
+    }
+    return s.size()<26;
+}
+
+void solve()
+{
+    string a,b;
+    cin >> a >> b;
+    cout << transform(a,b) <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

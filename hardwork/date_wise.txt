@@ -370,3 +370,33 @@ https://cses.fi/problemset/task/1093/
 https://www.codechef.com/problems/CM164364
 
 15/06/2021
+https://www.codechef.com/problems/SUBLCM
+https://leetcode.com/problems/matchsticks-to-square/submissions/
+https://leetcode.com/problems/non-overlapping-intervals/
+https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
+https://leetcode.com/problems/find-all-anagrams-in-a-string/
+https://leetcode.com/problems/path-sum-iii/
+https://leetcode.com/problems/delete-node-in-a-bst/
+https://leetcode.com/problems/sort-characters-by-frequency/
+https://leetcode.com/problems/longest-palindromic-subsequence/
+https://leetcode.com/problems/palindromic-substrings/
+
+16/06/2021
+https://leetcode.com/problems/single-element-in-a-sorted-array/
+https://leetcode.com/problems/koko-eating-bananas/
+https://practice.geeksforgeeks.org/problems/alien-dictionary/1#
+possible Transform 
+https://practice.geeksforgeeks.org/problems/minimum-swaps/1
+https://www.codechef.com/LRNDSA08/problems/FIRESC
+https://www.codechef.com/LRNDSA08/problems/MARLA
+https://leetcode.com/explore/challenge/card/june-leetcoding-challenge-2021/605/week-3-june-15th-june-21st/3781/
+Disjoint Set Union
+
+17/06/2021
+https://www.codechef.com/LRNDSA07/problems/SUBINC
+https://www.codechef.com/LRNDSA07/problems/CDQU5
+https://www.codechef.com/LRNDSA07/problems/KPRIME
+https://www.codechef.com/LRNDSA08/problems/ACM14KG3/
+https://www.codechef.com/LRNDSA04/problems/EURON
+https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/
+https://cses.fi/problemset/task/1667/

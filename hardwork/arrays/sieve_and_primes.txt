@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void sieve(vector<int>& dp,vector<int>& prime,int n)
+{
+    prime[0] = prime[1] = 0;
+    for(int i = 2;i<n;i++)
+    {
+        if(prime[i]==1)
+        {
+            dp[i] = 1;
+            for(int j=2*i;j<n;j+=i)
+            {
+                prime[j] = 0;
+                dp[j]++;
+            }
+        }
+    }
+}
+
+void solve()
+{
+    int n = 1000001;
+    vector<int> dp(n);
+    vector<int> prime(n,1);
+    sieve(dp,prime,n);
+ 
+    int q;
+    cin >> q;
+    while(q--)
+    {
+        int ans = 0;
+        int a,b,k;
+        cin >> a >> b >> k;
+        for(int i = a;i<=b;i++)
+        {
+            if(dp[i]==k)
+            {
+                ans++;
+            }
+        }
+        cout << ans <<"\n";
+    }
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
