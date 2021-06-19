@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+    ll n;
+    cin >> n;
+    vector<pair<pair<ll,ll>,ll>> customers(n);
+    for(int i = 0;i<n;i++)
+    {
+        cin >> customers[i].first.first >> customers[i].first.second;
+        customers[i].second = i;
+    }
+    sort(customers.begin(),customers.end());
+    vector<ll> roomassigned(n,-1);
+    ll roomid = 1;
+    priority_queue<pair<ll,ll>,vector<pair<ll,ll>>,greater<pair<ll,ll>>> rooms;
+    for(int i = 0;i<n;i++)
+    {
+        if(rooms.size()==0)
+        {
+            roomassigned[customers[i].second] = roomid++;
+            rooms.push({customers[i].first.second,roomid-1});
+        }
+        else
+        {
+            if(rooms.top().first < customers[i].first.first)
+            {
+                roomassigned[customers[i].second] = rooms.top().second;
+                pair<ll,ll> x = rooms.top();
+                rooms.pop();
+                rooms.push({customers[i].first.second,x.second});
+            }
+            else
+            {
+                roomassigned[customers[i].second] = roomid++;
+                rooms.push({customers[i].first.second,roomid-1});
+            }
+        }
+    }
+    cout << roomid-1 <<"\n";
+    for(auto x:roomassigned)
+    {
+        cout << x <<" ";
+    }
+    cout <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

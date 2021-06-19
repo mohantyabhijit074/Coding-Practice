@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+    string a,b;
+    cin >> a >> b;
+    int n = b.length();
+    unordered_map<char,int> mp;
+    for(auto ch : b)
+    {
+        mp[ch]++;
+    }
+    int l = 0,len = INT_MAX,i=0,j=0,count = 0;
+    string ans = "",res = "";
+    for(int r = 0;r<a.length();r++)
+    {
+        if(--mp[a[r]]>=0)
+        {
+            count++;
+        }
+        while(count==b.length())
+        {
+            if(r-l+1<len)
+            {
+                len = r-l+1;
+                ans = a.substr(l,len);
+            }
+            if(++mp[a[l]]>0)
+            {
+                count--;
+            }
+            ++l;
+        }
+    }
+    res = ans==""?"-1":ans;
+    cout << ans <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
