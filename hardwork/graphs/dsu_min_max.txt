@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+ll get_parent(vector<int>& parent,ll a)
+{
+    return parent[a] == (parent[a]==a?a:get_parent(parent,parent[a]));
+}
+
+void Union(vector<int>& parent,vector<int>& rank,vector<int>& max_,vector<int>& min_,vector<int>& size_,ll a,ll b)
+{
+    a = get_parent(parent,a);
+    b = get_parent(parent,b);
+    if(rank[a]>rank[b])
+    {
+        parent[b] = a;
+        size_[a]+=size_[b];
+        max_[a] = max(max_[a],max_[b]);
+        min_[a] = max(min_[a],min_[b]);
+    }
+    else 
+    {
+        parent[a] = b;
+        size_[b]+=size_[a];
+        max_[b] = max(max_[a],max_[b]);
+        min_[b] = max(min_[a],min_[b]);
+    }
+}
+void solve()
+{
+    ll n,m;
+    vector<int> parent(n+1);
+    vector<int> rank(n+1,0);
+    vector<int> max_(n+1,INT_MIN);
+    vector<int> min_(n+1,INT_MAX);
+    vector<int> size_(n+1,0);
+    for(int i = 0;i<=n;i++)
+    {
+        parent[i] = i;
+    }
+    while(m--)
+    {
+        ll t;
+        cin >> t;
+        if(t==1)
+        {
+            ll x,y;
+            cin >> x >> y;
+            Union(parent,rank,max_,min_,size_,x,y);
+        }
+        else 
+        {
+            ll x;
+            cin >> x;
+            cout << get_parent(parent,x) <<"\n";
+        }
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

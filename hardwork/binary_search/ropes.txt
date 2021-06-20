@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+int isfeasible(vector<ll>& arr,double mid,ll k)
+{
+    int w = 0;
+    for(int i = 0;i<arr.size();i++)
+    {
+        w+=floor(arr[i]/mid);
+    }
+    //cout << "w = " <<w<<"\n";
+    return w>=k;
+}
+void solve()
+{
+    ll n,k;
+    cin >> n >> k;
+    vector<ll> arr(n);
+    for(int i = 0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    double l = 0;
+    double r = 1e8;
+    double res = 0;
+    int j = 0;
+    while(j<100)
+    {
+        double mid = (l+r)/2;
+        //cout << mid <<"\n";
+        if(isfeasible(arr,mid,k))
+        {
+            res = mid;
+            l = mid;
+        }
+        else 
+        {
+            r = mid;
+        }
+        j++;
+    }
+    cout << setprecision(20) <<res <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
