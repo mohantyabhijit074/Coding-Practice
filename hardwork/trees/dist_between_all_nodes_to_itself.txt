@@ -1,0 +1,84 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+int n;
+vector<vector<int>> adj;
+vector<int> ans;
+vector<int> down;
+vector<int> num;
+
+void calc_down(int i=0,int par = -1)
+{
+    down[i] = 0;
+    num[i] = 0;
+    for(int ch : adj[i])
+    {
+        if(ch==par)
+        {
+            continue;
+        }
+        calc_down(ch,i);
+        down[i]+=(down[ch]+num[ch]);
+        num[i]+=num[ch];
+    }
+    num[i]+=1;
+}
+
+void calc_ans(int i=0,int par = -1)
+{
+    if(i==0)
+    {
+        ans[i] = down[i];
+    }
+    else 
+    {
+        ans[i] = ans[par] + n - 2*num[i];
+    }
+    for(int ch : adj[i])
+    {
+        if(ch==par)
+        {
+            continue;
+        }
+        calc_ans(ch,i);
+    }
+}
+
+void solve()
+{
+    cin >> n;
+    adj.resize(n);
+    ans.resize(n); 
+    down.resize(n);
+    num.resize(n);
+    for(int i = 0;i<n-1;i++)
+    {
+        int u,v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    calc_down();
+    calc_ans();
+    for(auto it : ans)
+    {
+        cout << it <<" ";
+    }
+    cout <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

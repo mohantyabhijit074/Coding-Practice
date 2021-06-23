@@ -1,65 +1,44 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
 #define ll long long
-#define FAST1 ios_base::sync_with_stdio(false);
-#define FAST2 cin.tie(NULL);
- 
- 
-void solve(){
-    ll n;
-    cin>>n;
-    string s;
-    cin>>s;
-    int i,j,k,l,r;
-    int ans = INT_MAX;
-    int zero_ = 0,one_ = 0;
-    for(int i = 0;i<n;i++)
+
+void solve()
+{
+    ll x,n;
+    cin >> x >> n;
+    set<int> pos;
+    multiset<int> len;
+    pos.insert(0);
+    pos.insert(x-0);
+    len.insert(x);
+    for(int i = 0;i<n;++i)
     {
-        if(s[i]=='1')
-        {
-            one_++;
-        }
-        else    
-        {
-            zero_++;
-        }
+        int add;
+        cin >> add ;
+        //cout << add <<"\n";
+        pos.insert(add);
+        auto iter = pos.find(add);
+        int previous = *prev(iter);
+        int next_val = *next(iter);
+        len.erase(len.find(next_val-previous));
+        len.insert(add-previous);
+        len.insert(next_val-add);
+        cout << *len.rbegin() <<" ";
     }
-    vector<int> factors;
-    for(int i =1;i<=n;i++)
-    {
-        if(n%i==0)
-        {
-            factors.push_back(i);
-        }
-    }
-    for(auto factor:factors)
-    {
-        vector<int> zero(factor,0),one(factor,0);
-        for(int i = 0;i<n;i++)
-        {
-            if(s[i]=='0')
-            {
-                zero[i%factor]++;
-            }
-            else
-            {
-                one[i%factor]++;
-            }
-        }
-        for(int i = 0;i<factor;i++)
-        {
-            ans = min(ans,zero[i]+one_-one[i]);
-        }
-    }
-    cout<<ans<<endl;
+    cout <<"\n";
 }
- 
-int main(){
-    FAST1;
-    FAST2;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     ll t;
-    cin>>t;
-    while(t--){
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
         solve();
     }
+    return 0;
 }

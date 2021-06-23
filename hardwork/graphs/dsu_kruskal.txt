@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+class Edge
+{
+    public:
+        int src;
+        int dest;
+        int wt;
+};
+ll Get(vector<int>& parent,ll a)
+{
+    return parent[a] = (parent[a]==a?a:Get(parent,parent[a]));
+}
+
+void Union(vector<int>& parent,vector<int>& rank,ll a,ll b)
+{
+    a = Get(parent,a);
+    b = Get(parent,b);
+    if(rank[a]==rank[b])
+    {
+        rank[a]++;
+    }
+    if(rank[a]>rank[b])
+    {
+        parent[b] = a;
+    }
+    else 
+    {
+        parent[a] = b;
+    }
+}
+
+bool cmp(Edge a,Edge b)
+{
+    return a.wt < b.wt;
+}
+void kruskal(Edge *input,int n,int e)
+{
+    sort(input,input+e,cmp);
+    Edge *output = new Edge[n-1];
+    vector<int> parent(n+1);
+    vector<int> rank(n+1,0);
+    for(int i = 0;i<=n;i++)
+    {
+        parent[i] = i;
+    }
+    int count = 0;
+    int i = 0;
+    while(count<n-1)
+    {
+        Edge curr = input[i];
+        ll src = Get(parent,curr.src);
+        ll dest = Get(parent,curr.dest);
+        if(src!=dest)
+        {
+            output[count] = curr;
+            Union(parent,rank,src,dest);
+            count++;
+        }
+        i++;
+    }
+    int tw = 0;
+    for(int i = 0;i<n-1;i++)
+    {
+        tw+=output[i].wt;
+    }
+    cout << tw <<"\n";
+}
+void solve()
+{
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
