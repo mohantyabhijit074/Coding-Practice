@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+    ll n;
+    cin >> n;
+    vector<int> arr(n);
+    for(int i = 0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    int dp[n][n];
+    memset(dp,0,sizeof(dp));
+    for(int g = 0;g<n;g++)
+    {
+        for(int i = 0,j=g;j<n;i++,j++)
+        {
+            int res = INT_MIN;
+            for(int k = i;k<=j;k++)
+            {
+                int lc = (k==i)?0:dp[i][k-1];
+                int rc = (k==j)?0:dp[k+1][j];
+                int val = (i==0?1:arr[i-1])*arr[k]*((j==n-1)?1:arr[j+1]);
+                int tc = lc+rc+val;
+                res = max(res,tc);
+            }
+            dp[i][j] = res;
+        }
+    }
+    cout << dp[0][n-1] <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

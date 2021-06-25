@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+ll dp[22][(1<<22)];
+int find_ways(vector<vector<int>>& mat,int i,int mask,int n)
+{
+    if(i==n+1)
+    {
+        if(mask==0)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    if(dp[i][mask]!=-1)
+    {
+        return dp[i][mask];
+    }
+    ll ans = 0;
+    for(int w = 0 ;w<n;w++)
+    {
+        bool avail = ((1<<w)&mask)==0?0:1;
+        if(avail and mat[i][w+1]==1)
+        {
+            ans =   ((ans%mod) + (find_ways(mat,i+1,mask^(1<<w),n)%mod))%mod;
+        }
+
+    }
+    return dp[i][mask] = ans;
+}
+
+void solve()
+{
+    ll n;
+    cin >> n;
+    vector<vector<int>> mat(n+1,vector<int>(n+1));
+    memset(dp,-1,sizeof(dp));
+    for(int i = 1;i<=n;i++)
+    {
+        for(int j = 1;j<=n;j++)
+        {
+            cin >> mat[i][j];
+        }
+    }
+    cout << find_ways(mat,1,(1<<n)-1,n) <<"\n"; 
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

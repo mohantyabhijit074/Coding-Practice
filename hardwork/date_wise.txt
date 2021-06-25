@@ -467,3 +467,25 @@ https://practice.geeksforgeeks.org/problems/find-sum-of-different-corresponding-
 https://cses.fi/problemset/task/1163/
 
 24/06/2021
+https://www.codechef.com/problems/KINGSHIP
+https://www.codechef.com/problems/ARRGRAPH
+Find ways Dp with bitmasking
+https://www.interviewbit.com/problems/paint-house/
+https://www.interviewbit.com/problems/subset-sum-problem/
+https://www.interviewbit.com/problems/min-jumps-array/
+https://www.interviewbit.com/problems/jump-game-array/
+https://www.interviewbit.com/problems/tushars-birthday-party/
+https://leetcode.com/explore/challenge/card/june-leetcoding-challenge-2021/606/week-4-june-22nd-june-28th/3790/ (3D Dp)
+https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1#
+
+25/06/2021
+https://leetcode.com/problems/burst-balloons/
+https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
+Rod Cutting problem : maximise the price
+Remove all occurences of string A from string B 
+Champ numbers Ranger query
+https://codeforces.com/contest/1541/problem/A
+https://codeforces.com/contest/1541/problem/B
+https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1
+
+26/06/2021
