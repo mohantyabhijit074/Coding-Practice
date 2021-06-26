@@ -1,9 +1,11 @@
+import math
 def solve():
     li = []
-    for i in range(1,pow(2,16)+1):
-        x = bin(i)[2:]
-        if x==x[::-1]:
-            li.append(i)
+    p = 2
+    for i in range(1,math.ceil(math.log2(pow(10,19)))):
+        if pow(2,i)>pow(10,19):
+            break
+        li.append(pow(2,i))
     print(li)
 t = int(input())
 for _ in range(t):

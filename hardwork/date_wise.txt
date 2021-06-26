@@ -489,3 +489,12 @@ https://codeforces.com/contest/1541/problem/B
 https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1
 
 26/06/2021
+Range query update
+https://codeforces.com/contest/1487/problem/C
+https://www.codechef.com/LRNDSA03/problems/SAVKONO
+https://www.codechef.com/LTIME97B/problems/FALSNUM
+https://www.codechef.com/LTIME97B/problems/UNONE
+https://www.codechef.com/LTIME97B/problems/REALBIN
+https://www.interviewbit.com/problems/largest-area-of-rectangle-with-permutations/
+
+27/06/2021

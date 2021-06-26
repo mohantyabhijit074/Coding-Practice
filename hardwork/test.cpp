@@ -6,72 +6,7 @@ using namespace std;
 
 void solve()
 {
-    string s;
-    cin >> s;
-    int n = s.length();
-    int dp[n][n];
-    memset(dp,0,sizeof(dp));
-    int c = 0;
-    for(int g=0;g<n;g++)
-    {
-        for(int i = 0,j=g;j<n;i++,j++)
-        {
-            if(g==0)
-            {
-                dp[i][j] = 1;
-            }
-            else if(g==1)
-            {
-                if(s[i]==s[j])
-                {
-                    dp[i][j] = 1;
-                }
-                else 
-                {
-                    dp[i][j] = 0;
-                }
-            }
-            else 
-            {
-                if(s[i]==s[j] && dp[i+1][j-1]==1)
-                {
-                    dp[i][j] = 1;
-                }
-                else 
-                {
-                    dp[i][j] = 0;
-                }
-            }
-        }
-    }
-    //cout << c <<"\n";
-    int strg[n];
-    memset(strg,0,sizeof(strg));
-    strg[0] = 0;
-    for(int j=1;j<n;j++)
-    {
-        if(dp[0][j]==1)
-        {
-            strg[j] = 0;
-        }
-        else
-        {
-            int ans = INT_MAX;
-            for(int i = j;i>=1;i--)
-            {
-                if(dp[i][j]==1)
-                {
-                    if(strg[i-1]<ans)
-                    {
-                        ans = strg[i-1];
-                    }
-                }
-            }
-            strg[j] = ans+1;
-        }
-        
-    }
-    cout << strg[n-1] <<"\n";
+
 }
 int main()
 {
