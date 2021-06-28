@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+vector<vector<pair<ll,ll>>> adj;
+vector<ll> bfs(ll src,ll c,ll n)
+{
+    queue<ll> q;
+    vector<ll> dist(n+1,-1);
+    q.push(src);
+    dist[src] = 0;
+    while(!q.empty())
+    {
+        ll i = q.front();
+        q.pop();
+        for(pair<ll,ll> nb : adj[i])
+        {
+            if(dist[nb.first]!=-1 or nb.second !=c)
+            {
+                continue;
+            }
+            q.push(nb.first);
+            dist[nb.first] = dist[i] + 1;
+        }
+    }
+    return dist;
+}
+void solve()
+{
+    ll n,m;
+    cin >> n >> m;
+    adj.reserve(n+1);
+    while(m--)
+    {
+        ll i,j,c;
+        cin >> i >> j >> c;
+        adj[i].push_back({j,c});
+        adj[j].push_back({i,c});
+    }
+    ll src ,dest ;
+    cin >> src >> dest;
+    vector<ll> ds = bfs(src,0,n);
+    vector<ll> dd = bfs(dest,1,n);
+    ll ans = 1e10;
+    for(int i = 1;i<=n;i++)
+    {
+        if(i==src or i==dest or ds[i]==-1 or dd[i]==-1 or dd[dest]==-1)
+        {
+            continue;
+        }
+        ans = min(ans,ds[i]+dd[i]);
+    }
+    if(ans==1e10)
+    {
+        ans = -1;
+    }
+    cout << ans <<"\n";
+    return;
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

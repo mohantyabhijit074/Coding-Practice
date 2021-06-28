@@ -1,0 +1,86 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+int get_parent(vector<int>& par,int a)
+{
+    return par[a]=(par[a]==a?a:get_parent(par,par[a]));
+}
+
+void Union(vector<int>& parent,vector<int>& rank,int i,int j)
+{   
+    int a = get_parent(parent,i);
+    int b = get_parent(parent,j);
+    if(rank[a]==rank[b])
+    {
+        rank[a]++;
+    }
+    if(rank[a]>rank[b])
+    {
+        parent[b] = a;
+    }
+    else 
+    {
+        parent[a] = b;
+    }
+}
+
+int redundant(vector<vector<int>>& arr,vector<int>& ans)
+{
+    int n = arr.size();
+    vector<int> par(n+1);
+    vector<int> rank(n+1,-1);
+    for(int i = 0;i<=n;i++)
+    {
+        par[i] = i;
+    }
+    for(int i = 0;i<arr.size();i++)
+    {
+        int u = arr[i][0];
+        int v = arr[i][1];
+        //cout << u <<" "<<v<<"\n";
+        int a = get_parent(par,u);
+        int b = get_parent(par,v);
+        //cout << "a : " <<a <<" b: "<<b <<"\n";
+        if(a==b)
+        {
+            ans.push_back(u);
+            ans.push_back(v);
+            return 1;     
+        }
+        Union(par,rank,u,v);
+        
+    }
+    return 0;
+}
+void solve()
+{
+    ll n;
+    cin >> n;
+    vector<vector<int>> arr(n);
+    for(int i = 0;i<n;i++)
+    {
+        int u,v;
+        cin >> u >> v;
+        arr[i].push_back(u);
+        arr[i].push_back(v);
+    }
+    vector<int> ans;
+    if(redundant(arr,ans))
+        cout << ans[0] <<" "<< ans[1] <<"\n";
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

@@ -498,3 +498,21 @@ https://www.codechef.com/LTIME97B/problems/REALBIN
 https://www.interviewbit.com/problems/largest-area-of-rectangle-with-permutations/
 
 27/06/2021
+Red Blue graph traversal
+https://leetcode.com/problems/rotting-oranges/
+https://www.spoj.com/problems/GNYR09F/
+https://codeforces.com/problemset/problem/1056/D
+https://leetcode.com/problems/candy/
+https://leetcode.com/problems/redundant-connection/
+https://leetcode.com/problems/largest-rectangle-in-histogram/
+
+28/06/2021
+https://leetcode.com/problems/maximal-rectangle/
+https://leetcode.com/problems/maximal-square/
+https://practice.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x5651/1
+https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/E
+https://codeforces.com/edu/course/2/lesson/9/3/practice/contest/307094/problem/B
+https://codeforces.com/edu/course/2/lesson/7/1/practice/contest/289390/problem/A
+https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
+
+29/06/2021

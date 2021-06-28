@@ -1,0 +1,78 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+int n,m;
+int arr[1000][1000];
+bool vis[1000][1000];
+
+bool valid(int x,int y)
+{
+    if(x<0 || y<0 || x>=n || y>=m || vis[x][y] || arr[x][y]==0)
+    {
+        return false;
+    }
+    return true; 
+}
+int dx[] = {1,0,-1,0};
+int dy[] = {0,1,0,-1};
+void solve()
+{
+    cin >> n >> m;
+    for(int i = 0;i<n;i++)  
+    {
+        for(int j = 0;j<m;j++)
+        {
+            cin >> arr[i][j];
+        }
+    }
+    queue<array<int,3>> q;
+    for(int i = 0;i<n;i++)
+    {
+        for(int j = 0;j<m;j++)
+        {
+            if(arr[i][j]==2)
+            {
+                q.push({i,j,0});
+                vis[i][j] = 1;
+            }
+        }
+    }
+    int ans = 0;
+    while(!q.empty())
+    {
+        int x = q.front()[0];
+        int y = q.front()[1];
+        int dis = q.front()[2];
+        ans = max(ans,dis);
+        q.pop();
+        for(int i = 0;i<4;i++)
+        {
+            int X = x+dx[i];
+            int Y = y+dy[i];
+            int newdis = dis+1;
+            if(valid(X,Y)==1)
+            {
+                vis[X][Y] = 1;
+                q.push({X,Y,newdis});
+            }
+        }
+    }
+    cout << ans <<"\n";
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
