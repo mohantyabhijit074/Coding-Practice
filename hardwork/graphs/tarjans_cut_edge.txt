@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+void dfs(vector<vector<int>>& adj,int u,vector<int>& disc,vector<int>& low,vector<int>& parent,vector<pair<int,int>>& bridge)
+{
+    static int time = 0;
+    disc[u] = low[u] = time;
+    time++;
+    for(int v : adj[u])
+    {
+        if(disc[v]==-1)
+        {
+            parent[v] = u;
+            dfs(adj,v,disc,low,parent,bridge);
+            low[u] = min(low[u],low[v]);
+            if(low[v]>disc[u])
+            {
+                bridge.push_back({u,v});
+            }
+        }
+        else if (v!=parent[u]) 
+        {
+            low[u] = min(low[u],disc[v]);
+        }
+    }
+}
+void solve()
+{
+    ll n,m;
+    cin >> n >> m;
+    vector<vector<int>> adj(n);
+    vector<pair<int,int>> bridge;
+    vector<int> disc(n,-1);
+    vector<int> low(n,-1);
+    vector<int> parent(n,-1);
+    for(int i = 0;i<m;i++)  
+    {
+        int u,v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    for(int i = 0;i<n;i++)
+    {
+        if(disc[i]==-1)
+        {
+            dfs(adj,i,disc,low,parent,bridge);
+        }
+    }
+    for(auto it : bridge)
+    {
+        cout << it.first <<"--" <<it.second<<"\n";
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

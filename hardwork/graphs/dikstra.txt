@@ -6,7 +6,6 @@ using namespace std;
 ll n,m;
 vector<vector<pair<ll,ll>>> g;
 vector<ll> dist;
-#define inf ll_MAX
 const ll infinity = 1e17;
 void dikstra()
 {

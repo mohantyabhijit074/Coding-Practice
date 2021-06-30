@@ -516,3 +516,18 @@ https://codeforces.com/edu/course/2/lesson/7/1/practice/contest/289390/problem/A
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
 
 29/06/2021
+https://leetcode.com/problems/word-ladder/
+https://leetcode.com/problems/network-delay-time/
+https://leetcode.com/problems/maximum-width-of-binary-tree/
+https://practice.geeksforgeeks.org/problems/maximize-number-of-1s0905/1
+https://www.hackerrank.com/contests/alcoding-june-challenge-2021/challenges/ross-the-palaeontologist
+https://www.hackerrank.com/contests/alcoding-june-challenge-2021/challenges/or-and-1
+https://codeforces.com/contest/1485/problem/B
+
+30/06/2021
+https://practice.geeksforgeeks.org/problems/minimum-sum-partition3317/1#
+https://practice.geeksforgeeks.org/problems/largest-number-in-k-swaps-1587115620/1
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+https://leetcode.com/problems/super-egg-drop/submissions/
+https://www.interviewbit.com/problems/pair-with-given-difference/
+https://www.interviewbit.com/problems/max-continuous-series-of-1s/
