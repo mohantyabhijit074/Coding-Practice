@@ -1,14 +1,16 @@
-r = 500000004
 def solve():
-    a,b = map(int,input().split())
-    if a==0 or b==0:
-        print(0)
-    else:
-        x = max(a,b)
-        y = pow(2,x)
-        ans = (y*r)%(pow(10,9)+7)
-        print(pow(2,x,pow(10,9)+7))
-        #print(ans)
+    n,a,b,c = map(int,input().split())
+    ans = 0
+    for i in range(4001):
+        for j in range(4001):
+            d = n-i*a-j*b 
+            if d<0:
+                break 
+            k = d/c 
+            if k==int(k):
+                ans = max(ans,int(k)+i+j)
+    print(ans)
+
 t = 1
 for _ in range(t):
     solve()

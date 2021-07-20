@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+bool ischeck(string s,map<char,vector<int>>& mp)
+{
+    int low = -1;
+    for(int i = 0;s[i]!='\0';++i)
+    {
+        int ind = upper_bound(mp[s[i]].begin(),mp[s[i]].end(),low)-mp[s[i]].begin();
+        if(ind==mp[s[i]].size())
+        {
+            return false;
+        }
+        low = mp[s[i]][ind];
+    }
+    return true;
+}
+void solve()
+{
+    string t,s;
+    cin >> t >> s;
+    map<char,vector<int>> mp;
+    for(int i = 0;i<t.length();++i)
+    {
+        mp[t[i]].push_back(i);
+    }
+    cout << ischeck(s,mp) <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

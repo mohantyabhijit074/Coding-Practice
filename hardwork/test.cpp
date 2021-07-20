@@ -4,50 +4,40 @@ using namespace std;
 #define mod 1000000007
 #define ll long long
 
-vector<int> maxone(vector<int> &A, int B) {
-    int a=0,l=0,ans=0,m=0;
-    int n = A.size();
-    for(int i = 0;i<n;i++)
+template <typename T>
+void my_swap(T& x,T& y)
+{
+    T temp(x);
+    x = y;
+    y = temp;
+}
+template <typename ptr_t>
+void my_reverse(ptr_t first,ptr_t last)
+{
+    while(first!=last and first!=--last)
     {
-        if(A[i]==0)
-        {
-            a++;
-        }
-        while(a>B)
-        {
-            if(A[l]==0)
-                a--;
-            l++;
-        }
-        if(i-l+1>ans)
-        {
-            ans = i-l+1;
-            m = l;
-        }
+        my_swap(*first,*last);
+        ++first;
     }
-    //cout << m <<" "<<ans<<"\n";
-    vector<int> temp(ans);
-    for(int i = 0;i<ans;i++)
+}
+template <typename ptr_t>
+void disp(ptr_t begin,ptr_t end)
+{
+    while(begin!=end)
     {
-        temp[i] = m+i;
+        cout << *begin <<" ";
+        ++begin;
     }
-    return temp;
+    cout <<"\n";
 }
 void solve()
 {
-    ll n,k;
-    cin >> n >> k;
-    vector<int> arr(n);
-    for(int i = 0;i<n;i++)
-    {
-        cin >> arr[i];
-    }
-    vector<int> ans = maxone(arr,k);
-    for(auto z:ans)
-    {
-        cout << z <<" ";
-    }
-    cout <<"\n";
+    vector<string> arr;
+    arr.push_back("abc");
+    arr.push_back("abc");
+    arr.push_back("abc");
+    my_reverse(arr.begin(),arr.end());
+    disp(arr.begin(),arr.end());
 }
 int main()
 {
