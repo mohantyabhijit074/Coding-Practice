@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+	string s;
+	cin >> s;
+	int n = s.length();
+	vector<vector<int>> dp(n,vector<int>(n));
+	vector<int> ans(n,0);
+	for(int g=0;g<n;++g)
+	{
+		for(int i = 0,j=g;j<n;++i,++j)
+		{
+			if(g==0)
+			{
+				dp[i][j] = 1;
+			}
+			else if(g==1)
+			{
+				if(s[i]==s[j])
+				{
+					dp[i][j] = 1;
+				}
+				else 
+				{
+					dp[i][j] = 0;
+				}
+			}
+			else 
+			{
+				if(s[i]==s[j] and dp[i+1][j-1]==1)
+				{
+					dp[i][j] = 1;
+				}
+				else 
+				{
+					dp[i][j] = 0;
+				}
+			}
+		}
+
+	}
+	for(int j=0;j<n;++j)
+	{
+		int cut = j;
+		for(int i=0;i<=j;++i)
+		{	
+			if(dp[i][j])
+				cut = min(cut,i==0?0:ans[i-1]+1);
+		}
+		ans[j] = cut;
+	}
+	cout << ans[n-1] <<"\n";
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll t;
+	//cin >> t;
+	t = 1;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}
