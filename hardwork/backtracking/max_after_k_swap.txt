@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+string ans = "";
+void findmax(string& s,int k)
+{
+    if(ans<s)
+    {
+        ans = s;
+    }
+    if(k==0)
+    {
+        return;
+    }
+    else 
+    {
+        for(int i = 0;i<s.length()-1;++i)
+        {
+            for(int j = i+1;j<s.length();++j)
+            {
+                if(s[j]>s[i])   
+                {
+                    swap(s[j],s[i]);
+                    findmax(s,k-1);
+                    swap(s[j],s[i]);
+                }
+            }
+        }
+    }
+}
+void solve()
+{
+    int k;
+    string s;
+    cin >> s >> k;
+    findmax(s,k);
+    cout << ans <<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

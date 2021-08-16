@@ -607,3 +607,10 @@ https://binarysearch.com/problems/Dividing-Station
 https://binarysearch.com/problems/Sum-of-Digit-Paths-in-a-Tree
 https://binarysearch.com/problems/Range-Update
 https://binarysearch.com/problems/Uber-Pool
+
+https://leetcode.com/problems/graph-connectivity-with-threshold/
+https://leetcode.com/problems/making-a-large-island/
+https://leetcode.com/problems/maximum-profit-in-job-scheduling/
+https://leetcode.com/problems/palindrome-partitioning-ii/
+https://www.interviewbit.com/problems/evaluate-expression-to-true/
+https://binarysearch.com/problems/Number-of-Sublists-With-Small-Left-Value
