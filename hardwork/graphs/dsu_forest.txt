@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+int get(vector<int>& parent,int a)
+{
+    return parent[a]=(parent[a]==a?a:get(parent,parent[a]));
+}
+
+void Union(vector<int>& parent,vector<int>& rank,int a,int b)
+{
+    a = get(parent,a);
+    b = get(parent,b);
+    if(rank[a]==rank[b])
+    {
+        rank[a]++;
+    }
+    if(rank[a]>rank[b])
+    {
+        parent[b] = a;
+    }
+    else 
+    {
+        parent[a] = b;
+    }
+}
+void solve()
+{
+    ll n,a,b;
+    cin >> n >> a >> b;
+    vector<vector<int>> adj(n+1);
+    vector<int> parent1(n+1,0);
+    vector<int> parent2(n+1,0);
+    vector<pair<int,int>> ans;
+    for(int i = 0;i<=n;i++)
+    {
+        parent1[i] = i;
+        parent2[i] = i;
+    }
+    vector<int> rank1(n+1,0);
+    vector<int> rank2(n+1,0);
+    for(int i = 0;i<a;++i)
+    {
+        int u,v;
+        cin >> u >> v;
+        Union(parent1,rank1,u,v);
+    }
+    for(int i = 0;i<b;++i)
+    {
+        int u,v;
+        cin >> u >> v;
+        Union(parent2,rank2,u,v);
+    }
+    for(int i = 1;i<=n;i++)
+    {
+        for(int j = 1;j<=n;j++)
+        {
+            int a = get(parent1,i);
+            int b = get(parent1,j);
+            int c = get(parent2,i);
+            int d = get(parent2,j);
+            if(a!=b && c!=d)
+            {
+                ans.push_back({i,j});
+                Union(parent1,rank1,i,j); 
+                Union(parent2,rank2,i,j); 
+            }
+        }
+    }
+    cout << ans.size() <<"\n";
+    for(auto a:ans)
+    {
+        cout << a.first <<" "<<a.second<<"\n";
+    }
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

@@ -1,38 +1,39 @@
-def constuctString(word: str, k: int) -> str:
-    countArr = [0]*26
-    a, ans = ord('a'), []
-    for c in word:
-        countArr[ord(c)-a] += 1
-    i = 25 # start at z
-    # Now we have count of all chars we start from z to a.
-    while i >= 0:
-        # More chars than the window permits
-        if countArr[i] > k:
-            # Lets append k letters if they exist.
-            letter = chr(i+a)
-            ans.append(letter*k)
-            countArr[i] -= k
-            # look for the next element
-            j = i-1
-            while(countArr[j] <= 0 and j>0):
-                j -= 1
-            # add one of the next element
-            if countArr[j] > 0 and j >= 0:
-                letter = chr(j+a)
-                ans.append(letter)
-                countArr[j] -= 1
+def solve():
+    n,m,q = map(int,input().split())
+    d = {}
+    c = 0
+    f = 0
+    for i in range(q):
+        a,b = map(str,input().split())
+        b = int(b)
+        if b>n:
+            f = 1
+        if a =='+':
+            if c==m and b not in d:
+                f = 1
             else:
-                break # we cant build string more. 
-        elif countArr[i] > 0:
-            letter = chr(i+a)
-            ans.append(letter*countArr[i])
-            countArr[i] = 0 
-        else:  # this letter we can't do anything, lets skip
-            i -= 1
-        # print(''.join(ans))
-
-    return ''.join(ans)
-
-res = constuctString("zzzzza", 2)
-print(res)
-print(res == "zzazz")
+                c+=1 
+                if b not in d:
+                    d[b] = 1 
+                else:
+                    d[b] +=1 
+        else:
+            if c==0:
+                f=1  
+            else:
+                if b not in d:
+                    f = 1 
+ 
+                else:
+                    d[b]-=1 
+                    if d[b]==0:
+                        c-=1 
+    if f==0:
+        print("Consistent")
+        return
+    else:
+        print("Inconsistent")
+        return
+t = int(input())
+for _ in range(t):
+    solve()
