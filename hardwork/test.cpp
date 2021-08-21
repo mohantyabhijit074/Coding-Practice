@@ -4,55 +4,51 @@ using namespace std;
 #define mod 1000000007
 #define ll long long
 
-int fun(string a)
-{
-    int count = 0;
-    for(int i = 1;i<a.length();++i)
-    {
-        if(a[i]==a[i-1])
-            count++;
-    }
-    return count;
-}
 void solve()
-{   
+{
     int n;
     cin >> n;
-    string s,s1,s2;
-    cin >> s;
-    s1 = s;
-    s2 = s;
-    if(s1[0]=='?')
-        s1[0] = 'B';
-    for(int i = 1;i<s.length();++i)
+    vector<int> arr(n);
+    for(int i = 0;i<n;++i)
     {
-        if(s1[i-1]=='B' and s1[i]=='?')
-            s1[i] = 'R';
-        else if(s1[i-1]=='R' and s1[i]=='?')
-            s1[i] = 'B';
+        cin >> arr[i];
     }
-    if(s2[0]=='?')
-        s2[0] = 'R';
-    for(int i = 1;i<s.length();++i)
+    int start = INT_MAX, end = INT_MAX,l = 0;
+    int cur = arr[0],m = arr[0];
+    for(int i = 1;i<n;++i)
     {
-        if(s2[i-1]=='B' and s2[i]=='?')
-            s2[i] = 'R';
-        else if(s2[i-1]=='R' and s2[i]=='?')
-            s2[i] = 'B';
+        cur = max(cur+arr[i],arr[i]);
+        m = max(m,cur);
     }
-    //cout << s1 <<" "<<s2 <<"\n";
-    if(fun(s1)<fun(s2))
-        cout << s1 <<"\n";
-    else 
-        cout << s2 <<"\n";
+    map<int,int> mp;
+    int temp = 0;
+    for(int i = 0;i<n;++i)
+    {
+        temp+=arr[i];
+        if(temp==m)
+        {
+            start = 0;
+            end = i;
+        }
+        if(mp.find(temp-m)!=mp.end())
+        {
+            if(start>mp[temp-m])
+            {
+                start = mp[temp-m];
+                end = i;
+            }
+        }
+        mp[temp] = i;
+    }
+    cout << start+1 <<" "<<end+1<<" "<<m<<"\n";
 }
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     ll t;
-    cin >> t;
-    //t = 1;
+    //cin >> t;
+    t = 1;
     while(t--)
     {
         solve();

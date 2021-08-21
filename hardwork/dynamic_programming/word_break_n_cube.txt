@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define ll long long
+
+void solve()
+{
+    int n;
+    string s;
+    cin >> n;
+    cin >> s;
+    vector<string> dict(n);
+    for(int i = 0;i<n;++i)
+    {
+        cin >> dict[i];
+    }
+    vector<int> dp(s.size()+1,0);
+    dp[0] = 1;
+    for(int i = 0;i<=s.size();++i)
+    {
+        for(int j = 0;j<i;j++)
+        {
+            if(dp[j])
+            {
+                if(find(dict.begin(),dict.end(),s.substr(j,i-j))!=dict.end())
+                {
+                    dp[i] = 1;
+                    break;
+                }
+            }
+        }
+    }
+    cout << boolalpha;
+    cout <<dp[s.size()]<<"\n";
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t;
+    //cin >> t;
+    t = 1;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}

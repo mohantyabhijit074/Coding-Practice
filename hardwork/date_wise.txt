@@ -615,3 +615,15 @@ https://leetcode.com/problems/maximum-profit-in-job-scheduling/
 https://leetcode.com/problems/palindrome-partitioning-ii/
 https://www.interviewbit.com/problems/evaluate-expression-to-true/
 https://binarysearch.com/problems/Number-of-Sublists-With-Small-Left-Value
+https://binarysearch.com/problems/Shipping-and-Receiving
+https://binarysearch.com/problems/Count-Square-Submatrices
+https://binarysearch.com/problems/Bipartite-Graph
+https://binarysearch.com/problems/Count-of-Sublists-with-Same-First-and-Last-Values
+https://binarysearch.com/problems/Number-of-Sublists-With-Small-Left-Value
+https://codeforces.com/contest/1559/problem/D1
+https://codeforces.com/contest/1559/problem/C
+https://www.hackerrank.com/challenges/journey-to-the-moon/problem
+https://www.hackerearth.com/problem/algorithm/bfs-waali-7409c2ca-c1be890b/
+https://codeforces.com/contest/1354/problem/B
+https://leetcode.com/problems/binary-tree-maximum-path-sum/
+https://www.hackerrank.com/challenges/bfsshortreach/problem
