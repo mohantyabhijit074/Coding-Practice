@@ -5,42 +5,22 @@ using namespace std;
 #define ll long long
 
 void solve()
-{
-    int n;
-    cin >> n;
-    vector<int> arr(n);
+{   
+    ll n,m;
+    cin >> n >> m;
+    vector<vector<int>> grid(n,vector<int>(m));
     for(int i = 0;i<n;++i)
     {
-        cin >> arr[i];
-    }
-    int start = INT_MAX, end = INT_MAX,l = 0;
-    int cur = arr[0],m = arr[0];
-    for(int i = 1;i<n;++i)
-    {
-        cur = max(cur+arr[i],arr[i]);
-        m = max(m,cur);
-    }
-    map<int,int> mp;
-    int temp = 0;
-    for(int i = 0;i<n;++i)
-    {
-        temp+=arr[i];
-        if(temp==m)
+        for(int j = 0;j<m;++j)
         {
-            start = 0;
-            end = i;
+            cin >> grid[i][j];
         }
-        if(mp.find(temp-m)!=mp.end())
-        {
-            if(start>mp[temp-m])
-            {
-                start = mp[temp-m];
-                end = i;
-            }
-        }
-        mp[temp] = i;
     }
-    cout << start+1 <<" "<<end+1<<" "<<m<<"\n";
+    vector<vector<int>> dp(n,vector<int>(m,0));
+    for(int i = 0;i<m;++i)
+    {
+        dp[0][i] = grid[0][i];
+    }
 }
 int main()
 {
