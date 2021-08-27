@@ -5,22 +5,53 @@ using namespace std;
 #define ll long long
 
 void solve()
-{   
-    ll n,m;
-    cin >> n >> m;
-    vector<vector<int>> grid(n,vector<int>(m));
+{
+    int n,k;
+    cin >> n >> k;
+    vector<int> arr(n);
     for(int i = 0;i<n;++i)
     {
-        for(int j = 0;j<m;++j)
-        {
-            cin >> grid[i][j];
-        }
+        cin >> arr[i];
     }
-    vector<vector<int>> dp(n,vector<int>(m,0));
-    for(int i = 0;i<m;++i)
+    stack<int> st;
+    st.push(n-1);
+    vector<int> nge(n);
+    nge[n-1] = n;
+    for(int i = n-2;i>=0;i--)
     {
-        dp[0][i] = grid[0][i];
+        while(!st.empty() and arr[i]>=arr[st.top()])
+        {
+            st.pop();
+        }
+        if(st.empty())
+        {
+            nge[i] = n;
+        }
+        else 
+        {
+            nge[i] = st.top();
+        }
+        st.push(i);
     }
+    vector<int> ans;
+    int j = 0;
+    for(int i = 0;i<=n-k;++i)
+    {
+        if(j<i)
+        {
+            j = i;
+        }
+        while(nge[j]<i+k)
+        {
+            j = nge[j];
+        }
+        ans.push_back(arr[j]);
+    }
+    for(auto a:ans)
+    {
+        cout << a <<" ";
+    }
+    cout<<"\n";
 }
 int main()
 {
