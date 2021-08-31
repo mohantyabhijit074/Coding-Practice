@@ -626,3 +626,9 @@ https://www.hackerearth.com/problem/algorithm/bfs-waali-7409c2ca-c1be890b/
 https://codeforces.com/contest/1354/problem/B
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 https://www.hackerrank.com/challenges/bfsshortreach/problem
+https://binarysearch.com/problems/Wildfire
+https://binarysearch.com/problems/Wallstreet-Bets
+https://binarysearch.com/problems/Island-Shape-Perimeter
+https://binarysearch.com/problems/Edges-that-Disconnect-the-Graph
+https://www.spoj.com/problems/ACODE/
+https://leetcode.com/problems/arithmetic-slices-ii-subsequence/

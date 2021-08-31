@@ -1,23 +1,26 @@
-def solve():
-    n = int(input())
-    temp = []
-    kemp = []
+vowel = ['A','E','I','O','U']
+def count(a,b):
     c = 0
-    for i in range(n):
-        li = list(map(int,input().split()))
-        m = li[0]
-        c+=m
-        li = li[1:]
-        temp.append([c,max(li)+1-i])
-    ans = []
-    temp.sort(key = lambda x:x[1])
-    ans.append(temp[0][1])
-    #print(temp)
-    for i in range(1,len(temp)):
-        ans.append(temp[i][1]-temp[i][0])
-    print(max(ans))
-    
+    for i in range(len(a)):
+        if a[i]!=b[i]:
+            if b[i] in vowel and a[i] in vowel:
+                c+=2 
+            elif b[i] not in vowel and a[i] not in vowel:
+                c+=2 
+            else:
+                c+=1 
+    return c
+def solve():
+    s = input()
+    l = len(s)
+    ans = pow(10,10)
+    for i in range(26):
+        ch = chr(ord('A')+i)
+        temp = ch*l 
+        ans = min(ans,count(temp,s))
+    return ans
 
 t = int(input())
 for _ in range(t):
-    solve()
+    ans = solve()
+    print("Case #"+str(_+1)+": "+str(ans))
