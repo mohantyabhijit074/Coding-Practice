@@ -1,26 +1,18 @@
-vowel = ['A','E','I','O','U']
-def count(a,b):
-    c = 0
-    for i in range(len(a)):
-        if a[i]!=b[i]:
-            if b[i] in vowel and a[i] in vowel:
-                c+=2 
-            elif b[i] not in vowel and a[i] not in vowel:
-                c+=2 
-            else:
-                c+=1 
-    return c
-def solve():
-    s = input()
-    l = len(s)
-    ans = pow(10,10)
-    for i in range(26):
-        ch = chr(ord('A')+i)
-        temp = ch*l 
-        ans = min(ans,count(temp,s))
-    return ans
-
+def solve(i):
+    n,m,a,b = map(int,input().split())
+    if n+m-1>a or n+m-1>b:
+        print("Case #"+str(i+1)+": "+"Impossible")
+    else:
+        print("Case #"+str(i+1)+": "+"Possible")
+        for i in range(n):
+            for j in range(m):
+                if i==0 and j==0:
+                    print(a-(n+m-1-1),end=" ")
+                elif i==0 and j==m-1:
+                    print(b-(n+m-1-1),end=" ")
+                else:
+                    print(1,end=" ")
+            print()
 t = int(input())
 for _ in range(t):
-    ans = solve()
-    print("Case #"+str(_+1)+": "+str(ans))
+    solve(_)
